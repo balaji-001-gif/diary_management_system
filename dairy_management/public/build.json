@@ -1,0 +1,8 @@
+{
+	"js/dairy_management.min.js": [
+		"public/js/dairy_management.js"
+	],
+	"css/dairy_management.min.css": [
+		"public/css/dairy_management.css"
+	]
+}
