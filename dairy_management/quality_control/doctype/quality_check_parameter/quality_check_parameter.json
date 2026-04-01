@@ -1,6 +1,6 @@
 {
  "doctype": "DocType",
- "name": "QC Parameter",
+ "name": "Quality Check Parameter",
  "module": "Quality Control",
  "custom": 0,
  "istable": 1,

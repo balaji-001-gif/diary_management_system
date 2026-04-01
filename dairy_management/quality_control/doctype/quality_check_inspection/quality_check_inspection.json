@@ -1,6 +1,6 @@
 {
  "doctype": "DocType",
- "name": "QC Inspection",
+ "name": "Quality Check Inspection",
  "module": "Quality Control",
  "custom": 0,
  "is_submittable": 1,
@@ -14,7 +14,7 @@
   {"fieldname": "inspection_date", "fieldtype": "Date", "label": "Inspection Date", "reqd": 1, "default": "Today"},
   {"fieldname": "inspector", "fieldtype": "Link", "label": "Inspector", "options": "Employee"},
   {"fieldname": "sec_results", "fieldtype": "Section Break", "label": "Results"},
-  {"fieldname": "results", "fieldtype": "Table", "label": "Test Results", "options": "QC Result"},
+  {"fieldname": "results", "fieldtype": "Table", "label": "Test Results", "options": "Quality Check Result"},
   {"fieldname": "overall_result", "fieldtype": "Select", "label": "Overall Result", "options": "Pass\nFail\nConditional Release", "in_list_view": 1},
   {"fieldname": "quality_inspection", "fieldtype": "Link", "label": "ERPNext Quality Inspection", "options": "Quality Inspection", "read_only": 1}
  ],
