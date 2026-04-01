@@ -5,3 +5,4 @@ Procurement
 Inventory
 Quality Control
 Billing
+Dairy Management
