@@ -1,7 +1,27 @@
 [
-  {"role_name": "Dairy Manager", "desk_access": 1},
-  {"role_name": "Milk Collection Supervisor", "desk_access": 1},
-  {"role_name": "Lab Technician", "desk_access": 1},
-  {"role_name": "Farmer", "desk_access": 0},
-  {"role_name": "Route Agent", "desk_access": 1}
+  {
+    "name": "Dairy Manager",
+    "role_name": "Dairy Manager",
+    "desk_access": 1
+  },
+  {
+    "name": "Milk Collection Supervisor",
+    "role_name": "Milk Collection Supervisor",
+    "desk_access": 1
+  },
+  {
+    "name": "Lab Technician",
+    "role_name": "Lab Technician",
+    "desk_access": 1
+  },
+  {
+    "name": "Farmer",
+    "role_name": "Farmer",
+    "desk_access": 0
+  },
+  {
+    "name": "Route Agent",
+    "role_name": "Route Agent",
+    "desk_access": 1
+  }
 ]

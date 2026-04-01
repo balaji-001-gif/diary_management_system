@@ -1,5 +1,6 @@
 [
   {
+    "name": "Supplier-is_farmer",
     "doctype": "Custom Field",
     "dt": "Supplier",
     "fieldname": "is_farmer",
@@ -9,6 +10,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Supplier-milk_route",
     "doctype": "Custom Field",
     "dt": "Supplier",
     "fieldname": "milk_route",
@@ -19,6 +21,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Supplier-animal_count",
     "doctype": "Custom Field",
     "dt": "Supplier",
     "fieldname": "animal_count",
@@ -28,6 +31,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Supplier-cooperative_member_no",
     "doctype": "Custom Field",
     "dt": "Supplier",
     "fieldname": "cooperative_member_no",
@@ -37,6 +41,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Item-is_dairy_product",
     "doctype": "Custom Field",
     "dt": "Item",
     "fieldname": "is_dairy_product",
@@ -46,6 +51,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Item-standard_fat_percentage",
     "doctype": "Custom Field",
     "dt": "Item",
     "fieldname": "standard_fat_percentage",
@@ -55,6 +61,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Item-shelf_life_days",
     "doctype": "Custom Field",
     "dt": "Item",
     "fieldname": "shelf_life_days",
@@ -64,6 +71,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Stock Entry-batch_production",
     "doctype": "Custom Field",
     "dt": "Stock Entry",
     "fieldname": "batch_production",
@@ -74,6 +82,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Purchase Invoice-milk_collection_period",
     "doctype": "Custom Field",
     "dt": "Purchase Invoice",
     "fieldname": "milk_collection_period",
@@ -83,6 +92,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Quality Inspection-fat_content",
     "doctype": "Custom Field",
     "dt": "Quality Inspection",
     "fieldname": "fat_content",
@@ -92,6 +102,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Quality Inspection-snf_content",
     "doctype": "Custom Field",
     "dt": "Quality Inspection",
     "fieldname": "snf_content",
@@ -101,6 +112,7 @@
     "module": "Dairy Management"
   },
   {
+    "name": "Quality Inspection-somatic_cell_count",
     "doctype": "Custom Field",
     "dt": "Quality Inspection",
     "fieldname": "somatic_cell_count",
