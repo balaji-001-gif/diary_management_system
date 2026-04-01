@@ -1,25 +1,30 @@
 [
   {
+    "doctype": "Role",
     "name": "Dairy Manager",
     "role_name": "Dairy Manager",
     "desk_access": 1
   },
   {
+    "doctype": "Role",
     "name": "Milk Collection Supervisor",
     "role_name": "Milk Collection Supervisor",
     "desk_access": 1
   },
   {
+    "doctype": "Role",
     "name": "Lab Technician",
     "role_name": "Lab Technician",
     "desk_access": 1
   },
   {
+    "doctype": "Role",
     "name": "Farmer",
     "role_name": "Farmer",
     "desk_access": 0
   },
   {
+    "doctype": "Role",
     "name": "Route Agent",
     "role_name": "Route Agent",
     "desk_access": 1
