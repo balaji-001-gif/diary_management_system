@@ -1,0 +1,14 @@
+{
+	"name": "dairy_management",
+	"description": "Dairy Management System",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/balaji-001-gif/diary_management_system.git"
+	},
+	"author": "Antigravity",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/balaji-001-gif/diary_management_system/issues"
+	},
+	"homepage": "https://github.com/balaji-001-gif/diary_management_system#readme"
+}
