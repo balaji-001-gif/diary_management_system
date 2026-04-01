@@ -1,7 +1,7 @@
 import frappe
 from frappe.model.document import Document
 
-class QcInspection(Document):
+class QualityCheckInspection(Document):
     def before_save(self):
         self._evaluate_results()
 
