@@ -11,6 +11,10 @@ app_version = "1.0.0"
 # ── Required Apps ─────────────────────────────────────────────────────────────
 required_apps = ["frappe", "erpnext"]
 
+# ── Asset Configuration ────────────────────────────────────────────────────────
+app_include_js = "/assets/dairy_management/js/dairy_management.min.js"
+app_include_css = "/assets/dairy_management/css/dairy_management.min.css"
+
 # ── Fixtures ──────────────────────────────────────────────────────────────────
 fixtures = [
     {"dt": "Role", "filters": [["role_name", "in", [
