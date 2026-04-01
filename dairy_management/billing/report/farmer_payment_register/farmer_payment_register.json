@@ -1,0 +1,14 @@
+{
+ "doctype": "Report",
+ "name": "Farmer Payment Register",
+ "report_name": "Farmer Payment Register",
+ "report_type": "Script Report",
+ "ref_doctype": "Farmer Invoice",
+ "is_standard": "Yes",
+ "module": "Billing",
+ "filters": [
+  {"fieldname": "farmer", "label": "Farmer", "fieldtype": "Link", "options": "Farmer"},
+  {"fieldname": "from_date", "label": "From Date", "fieldtype": "Date"},
+  {"fieldname": "to_date", "label": "To Date", "fieldtype": "Date"}
+ ]
+}

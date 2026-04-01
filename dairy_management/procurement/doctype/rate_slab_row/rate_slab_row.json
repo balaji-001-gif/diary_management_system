@@ -1,0 +1,14 @@
+{
+ "doctype": "DocType",
+ "name": "Rate Slab Row",
+ "module": "Procurement",
+ "custom": 0,
+ "istable": 1,
+ "fields": [
+  {"fieldname": "fat_from", "fieldtype": "Float", "label": "Fat From (%)", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "fat_to", "fieldtype": "Float", "label": "Fat To (%)", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "snf_from", "fieldtype": "Float", "label": "SNF From (%)", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "snf_to", "fieldtype": "Float", "label": "SNF To (%)", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "rate_per_litre", "fieldtype": "Currency", "label": "Rate per Litre", "reqd": 1, "in_list_view": 1}
+ ]
+}

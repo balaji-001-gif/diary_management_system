@@ -1,0 +1,7 @@
+[
+  {"role_name": "Dairy Manager", "desk_access": 1},
+  {"role_name": "Milk Collection Supervisor", "desk_access": 1},
+  {"role_name": "Lab Technician", "desk_access": 1},
+  {"role_name": "Farmer", "desk_access": 0},
+  {"role_name": "Route Agent", "desk_access": 1}
+]

@@ -1,0 +1,12 @@
+{
+ "doctype": "Report",
+ "name": "Expiry Alert Report",
+ "report_name": "Expiry Alert Report",
+ "report_type": "Script Report",
+ "ref_doctype": "Expiry Tracker",
+ "is_standard": "Yes",
+ "module": "Inventory",
+ "filters": [
+  {"fieldname": "days_to_expiry", "label": "Days to Expiry Threshold", "fieldtype": "Int", "default": 30}
+ ]
+}

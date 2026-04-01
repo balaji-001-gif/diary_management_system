@@ -1,0 +1,12 @@
+{
+ "doctype": "DocType",
+ "name": "Deduction Voucher",
+ "module": "Billing",
+ "custom": 0,
+ "istable": 1,
+ "fields": [
+  {"fieldname": "deduction_type", "fieldtype": "Link", "label": "Deduction Type", "options": "Deduction Master", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "amount", "fieldtype": "Currency", "label": "Amount", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "remarks", "fieldtype": "Data", "label": "Remarks"}
+ ]
+}

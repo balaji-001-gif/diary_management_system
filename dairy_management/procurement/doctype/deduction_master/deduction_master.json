@@ -1,0 +1,17 @@
+{
+ "doctype": "DocType",
+ "name": "Deduction Master",
+ "module": "Procurement",
+ "custom": 0,
+ "is_submittable": 0,
+ "autoname": "field:deduction_type",
+ "description": "Master list of valid deduction types with GL accounts",
+ "fields": [
+  {"fieldname": "deduction_type", "fieldtype": "Data", "label": "Deduction Type", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "account", "fieldtype": "Link", "label": "GL Account", "options": "Account"},
+  {"fieldname": "auto_apply", "fieldtype": "Check", "label": "Auto Apply to All Invoices"}
+ ],
+ "permissions": [
+  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "delete": 1}
+ ]
+}

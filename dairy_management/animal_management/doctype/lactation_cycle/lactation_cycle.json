@@ -1,0 +1,28 @@
+{
+ "doctype": "DocType",
+ "name": "Lactation Cycle",
+ "module": "Animal Management",
+ "custom": 0,
+ "is_submittable": 1,
+ "autoname": "naming_series:",
+ "naming_series_options": "LC-.YYYY.-.####",
+ "description": "Per-parity lactation tracking with peak and total yield",
+ "fields": [
+  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "LC-.YYYY.-.####"},
+  {"fieldname": "animal", "fieldtype": "Link", "label": "Animal", "options": "Animal", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "lactation_number", "fieldtype": "Int", "label": "Lactation Number (Parity)", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "col_dates", "fieldtype": "Column Break"},
+  {"fieldname": "start_date", "fieldtype": "Date", "label": "Freshening / Start Date", "reqd": 1},
+  {"fieldname": "dry_off_date", "fieldtype": "Date", "label": "Dry-off Date"},
+  {"fieldname": "sec_yield", "fieldtype": "Section Break", "label": "Yield Data"},
+  {"fieldname": "total_yield_litres", "fieldtype": "Float", "label": "Total Yield (Litres)"},
+  {"fieldname": "peak_yield_litres", "fieldtype": "Float", "label": "Peak Yield (Litres)"},
+  {"fieldname": "col_peak", "fieldtype": "Column Break"},
+  {"fieldname": "peak_date", "fieldtype": "Date", "label": "Peak Date"},
+  {"fieldname": "avg_daily_yield", "fieldtype": "Float", "label": "Avg Daily Yield (Litres)", "read_only": 1}
+ ],
+ "permissions": [
+  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+  {"role": "Milk Collection Supervisor", "read": 1, "write": 1, "create": 1}
+ ]
+}

@@ -1,0 +1,77 @@
+from __future__ import unicode_literals
+
+app_name = "dairy_management"
+app_title = "Dairy Management"
+app_publisher = "Antigravity"
+app_description = "Complete Dairy Management System (DMS) — herd, collection, processing, billing"
+app_email = "admin@example.com"
+app_license = "MIT"
+app_version = "1.0.0"
+
+# ── Required Apps ─────────────────────────────────────────────────────────────
+required_apps = ["frappe", "erpnext"]
+
+# ── Fixtures ──────────────────────────────────────────────────────────────────
+fixtures = [
+    {"dt": "Role", "filters": [["role_name", "in", [
+        "Dairy Manager",
+        "Milk Collection Supervisor",
+        "Lab Technician",
+        "Farmer",
+        "Route Agent",
+    ]]]},
+    "Custom Field",
+    "Property Setter",
+]
+
+# ── Custom Roles ──────────────────────────────────────────────────────────────
+roles = [
+    {"role_name": "Dairy Manager"},
+    {"role_name": "Milk Collection Supervisor"},
+    {"role_name": "Lab Technician"},
+    {"role_name": "Farmer"},
+    {"role_name": "Route Agent"},
+]
+
+# ── Scheduler Events ──────────────────────────────────────────────────────────
+scheduler_events = {
+    "daily": [
+        "dairy_management.tasks.generate_daily_milk_summary",
+        "dairy_management.tasks.check_animal_vaccination_due",
+        "dairy_management.tasks.check_cold_storage_temperature",
+    ],
+    "weekly": [
+        "dairy_management.tasks.generate_farmer_payment_vouchers",
+    ],
+}
+
+# ── Document Events ───────────────────────────────────────────────────────────
+doc_events = {
+    "Milk Collection Entry": {
+        "before_save": "dairy_management.utils.calculations.calculate_collection_amount",
+        "on_submit": "dairy_management.milk_collection.doctype.milk_collection_entry.milk_collection_entry.on_submit",
+    },
+    "Batch Production": {
+        "on_submit": "dairy_management.processing.doctype.batch_production.batch_production.on_submit",
+    },
+    "Milk Procurement": {
+        "on_submit": "dairy_management.procurement.doctype.milk_procurement.milk_procurement.on_submit",
+    },
+    "Farmer Invoice": {
+        "on_submit": "dairy_management.billing.doctype.farmer_invoice.farmer_invoice.on_submit",
+    },
+    "Processing Order": {
+        "on_submit": "dairy_management.processing.doctype.processing_order.processing_order.on_submit",
+    },
+}
+
+# ── Website ───────────────────────────────────────────────────────────────────
+website_route_rules = [
+    {"from_route": "/farmer-portal", "to_route": "farmer_portal"},
+]
+
+# ── Jinja ─────────────────────────────────────────────────────────────────────
+jinja = {
+    "methods": [],
+    "filters": [],
+}

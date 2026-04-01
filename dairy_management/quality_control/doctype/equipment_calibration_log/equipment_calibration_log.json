@@ -1,0 +1,25 @@
+{
+ "doctype": "DocType",
+ "name": "Equipment Calibration Log",
+ "module": "Quality Control",
+ "custom": 0,
+ "is_submittable": 1,
+ "autoname": "naming_series:",
+ "naming_series_options": "ECL-.YYYY.-.####",
+ "description": "Calibration records for lab instruments",
+ "fields": [
+  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "ECL-.YYYY.-.####"},
+  {"fieldname": "equipment_name", "fieldtype": "Data", "label": "Equipment Name", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "equipment_id", "fieldtype": "Data", "label": "Equipment ID / Serial No.", "in_list_view": 1},
+  {"fieldname": "calibration_date", "fieldtype": "Date", "label": "Calibration Date", "reqd": 1, "default": "Today"},
+  {"fieldname": "col_calib", "fieldtype": "Column Break"},
+  {"fieldname": "calibrated_by", "fieldtype": "Data", "label": "Calibrated By"},
+  {"fieldname": "next_calibration_due", "fieldtype": "Date", "label": "Next Calibration Due"},
+  {"fieldname": "certificate_number", "fieldtype": "Data", "label": "Certificate No."},
+  {"fieldname": "result", "fieldtype": "Select", "label": "Result", "options": "Pass\nFail\nAdjusted", "in_list_view": 1}
+ ],
+ "permissions": [
+  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+  {"role": "Lab Technician", "read": 1, "write": 1, "create": 1, "submit": 1}
+ ]
+}

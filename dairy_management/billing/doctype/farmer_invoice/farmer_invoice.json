@@ -1,0 +1,28 @@
+{
+ "doctype": "DocType",
+ "name": "Farmer Invoice",
+ "module": "Billing",
+ "custom": 0,
+ "is_submittable": 1,
+ "autoname": "naming_series:",
+ "naming_series_options": "FINV-.YYYY.MM.-.####",
+ "description": "Monthly billing summary per farmer — creates ERPNext Purchase Invoice on submit",
+ "title_field": "farmer",
+ "fields": [
+  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "FINV-.YYYY.MM.-.####"},
+  {"fieldname": "farmer", "fieldtype": "Link", "label": "Farmer", "options": "Farmer", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "period_from", "fieldtype": "Date", "label": "Period From", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "period_to", "fieldtype": "Date", "label": "Period To", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "sec_amounts", "fieldtype": "Section Break", "label": "Amounts"},
+  {"fieldname": "total_litres_supplied", "fieldtype": "Float", "label": "Total Litres Supplied"},
+  {"fieldname": "gross_amount", "fieldtype": "Currency", "label": "Gross Amount"},
+  {"fieldname": "sec_deductions", "fieldtype": "Section Break", "label": "Deductions"},
+  {"fieldname": "deductions", "fieldtype": "Table", "label": "Deductions", "options": "Deduction Voucher"},
+  {"fieldname": "total_deductions", "fieldtype": "Currency", "label": "Total Deductions", "read_only": 1},
+  {"fieldname": "net_payable", "fieldtype": "Currency", "label": "Net Payable", "read_only": 1},
+  {"fieldname": "purchase_invoice", "fieldtype": "Link", "label": "Purchase Invoice", "options": "Purchase Invoice", "read_only": 1}
+ ],
+ "permissions": [
+  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "amend": 1}
+ ]
+}

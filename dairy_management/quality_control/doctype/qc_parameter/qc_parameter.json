@@ -1,0 +1,15 @@
+{
+ "doctype": "DocType",
+ "name": "QC Parameter",
+ "module": "Quality Control",
+ "custom": 0,
+ "istable": 1,
+ "fields": [
+  {"fieldname": "parameter_name", "fieldtype": "Data", "label": "Parameter Name", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "min_acceptable", "fieldtype": "Float", "label": "Min Acceptable", "in_list_view": 1},
+  {"fieldname": "max_acceptable", "fieldtype": "Float", "label": "Max Acceptable", "in_list_view": 1},
+  {"fieldname": "unit", "fieldtype": "Data", "label": "Unit", "in_list_view": 1},
+  {"fieldname": "fssai_ref", "fieldtype": "Data", "label": "FSSAI Reference"},
+  {"fieldname": "mandatory", "fieldtype": "Check", "label": "Mandatory"}
+ ]
+}

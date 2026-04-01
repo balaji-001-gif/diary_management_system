@@ -1,0 +1,24 @@
+{
+ "doctype": "DocType",
+ "name": "Expiry Tracker",
+ "module": "Inventory",
+ "custom": 0,
+ "is_submittable": 0,
+ "autoname": "naming_series:",
+ "naming_series_options": "EXP-.YYYY.-.####",
+ "description": "Batch-wise expiry monitoring for dairy products in stock",
+ "fields": [
+  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "EXP-.YYYY.-.####"},
+  {"fieldname": "item", "fieldtype": "Link", "label": "Item", "options": "Item", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "batch_no", "fieldtype": "Link", "label": "Batch No", "options": "Batch", "in_list_view": 1},
+  {"fieldname": "warehouse", "fieldtype": "Link", "label": "Warehouse", "options": "Warehouse"},
+  {"fieldname": "expiry_date", "fieldtype": "Date", "label": "Expiry Date", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "quantity_remaining", "fieldtype": "Float", "label": "Qty Remaining"},
+  {"fieldname": "days_to_expiry", "fieldtype": "Int", "label": "Days to Expiry", "read_only": 1, "in_list_view": 1},
+  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Safe\nNear Expiry\nExpired", "in_list_view": 1}
+ ],
+ "permissions": [
+  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1},
+  {"role": "Milk Collection Supervisor", "read": 1}
+ ]
+}

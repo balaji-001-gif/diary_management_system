@@ -1,0 +1,24 @@
+{
+ "doctype": "DocType",
+ "name": "Packaging Record",
+ "module": "Processing",
+ "custom": 0,
+ "is_submittable": 1,
+ "autoname": "naming_series:",
+ "naming_series_options": "PKG-.YYYY.-.####",
+ "description": "Packaging and labelling details per batch",
+ "fields": [
+  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "PKG-.YYYY.-.####"},
+  {"fieldname": "batch_production", "fieldtype": "Link", "label": "Batch Production", "options": "Batch Production", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "pack_type", "fieldtype": "Select", "label": "Pack Type", "options": "Pouch\nBottle\nTetra Pak\nBulk Can", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "pack_size_ml", "fieldtype": "Data", "label": "Pack Size (ml)", "in_list_view": 1},
+  {"fieldname": "col_packs", "fieldtype": "Column Break"},
+  {"fieldname": "packs_produced", "fieldtype": "Int", "label": "Packs Produced"},
+  {"fieldname": "label_batch_ref", "fieldtype": "Data", "label": "Label Batch Ref"},
+  {"fieldname": "rejected_packs", "fieldtype": "Int", "label": "Rejected Packs"}
+ ],
+ "permissions": [
+  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+  {"role": "Milk Collection Supervisor", "read": 1, "write": 1, "create": 1}
+ ]
+}

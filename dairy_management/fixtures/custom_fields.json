@@ -1,0 +1,112 @@
+[
+  {
+    "doctype": "Custom Field",
+    "dt": "Supplier",
+    "fieldname": "is_farmer",
+    "label": "Is Farmer",
+    "fieldtype": "Check",
+    "insert_after": "supplier_name",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Supplier",
+    "fieldname": "milk_route",
+    "label": "Milk Route",
+    "fieldtype": "Link",
+    "options": "Milk Route",
+    "insert_after": "is_farmer",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Supplier",
+    "fieldname": "animal_count",
+    "label": "Animal Count",
+    "fieldtype": "Int",
+    "insert_after": "milk_route",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Supplier",
+    "fieldname": "cooperative_member_no",
+    "label": "Cooperative Member No",
+    "fieldtype": "Data",
+    "insert_after": "animal_count",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Item",
+    "fieldname": "is_dairy_product",
+    "label": "Is Dairy Product",
+    "fieldtype": "Check",
+    "insert_after": "item_name",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Item",
+    "fieldname": "standard_fat_percentage",
+    "label": "Standard Fat Percentage",
+    "fieldtype": "Float",
+    "insert_after": "is_dairy_product",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Item",
+    "fieldname": "shelf_life_days",
+    "label": "Shelf Life Days",
+    "fieldtype": "Int",
+    "insert_after": "standard_fat_percentage",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Stock Entry",
+    "fieldname": "batch_production",
+    "label": "Batch Production",
+    "fieldtype": "Link",
+    "options": "Batch Production",
+    "insert_after": "posting_date",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Purchase Invoice",
+    "fieldname": "milk_collection_period",
+    "label": "Milk Collection Period",
+    "fieldtype": "Data",
+    "insert_after": "posting_date",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quality Inspection",
+    "fieldname": "fat_content",
+    "label": "Fat Content (%)",
+    "fieldtype": "Float",
+    "insert_after": "item_code",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quality Inspection",
+    "fieldname": "snf_content",
+    "label": "SNF Content (%)",
+    "fieldtype": "Float",
+    "insert_after": "fat_content",
+    "module": "Dairy Management"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quality Inspection",
+    "fieldname": "somatic_cell_count",
+    "label": "Somatic Cell Count (cells/ml)",
+    "fieldtype": "Int",
+    "insert_after": "snf_content",
+    "module": "Dairy Management"
+  }
+]

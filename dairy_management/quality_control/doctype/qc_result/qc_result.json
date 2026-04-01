@@ -1,0 +1,15 @@
+{
+ "doctype": "DocType",
+ "name": "QC Result",
+ "module": "Quality Control",
+ "custom": 0,
+ "istable": 1,
+ "fields": [
+  {"fieldname": "parameter_name", "fieldtype": "Data", "label": "Parameter", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "result_value", "fieldtype": "Float", "label": "Result Value", "in_list_view": 1},
+  {"fieldname": "unit", "fieldtype": "Data", "label": "Unit"},
+  {"fieldname": "min_acceptable", "fieldtype": "Float", "label": "Min"},
+  {"fieldname": "max_acceptable", "fieldtype": "Float", "label": "Max"},
+  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Pass\nFail", "in_list_view": 1}
+ ]
+}

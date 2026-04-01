@@ -1,0 +1,22 @@
+{
+ "doctype": "DocType",
+ "name": "Supplier Milk Rejection Log",
+ "module": "Quality Control",
+ "custom": 0,
+ "is_submittable": 1,
+ "autoname": "naming_series:",
+ "naming_series_options": "SMR-.YYYY.-.####",
+ "description": "Plant-gate rejection log for raw milk from suppliers",
+ "fields": [
+  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "SMR-.YYYY.-.####"},
+  {"fieldname": "supplier", "fieldtype": "Link", "label": "Supplier", "options": "Supplier", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "rejection_date", "fieldtype": "Date", "label": "Rejection Date", "reqd": 1, "default": "Today"},
+  {"fieldname": "quantity_litres", "fieldtype": "Float", "label": "Rejected Quantity (Litres)"},
+  {"fieldname": "reason", "fieldtype": "Select", "label": "Reason", "options": "Adulteration\nHigh TBC\nHigh SCC\nOff Temperature\nOther"},
+  {"fieldname": "remarks", "fieldtype": "Text", "label": "Remarks"}
+ ],
+ "permissions": [
+  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+  {"role": "Lab Technician", "read": 1, "write": 1, "create": 1, "submit": 1}
+ ]
+}

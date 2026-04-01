@@ -1,0 +1,12 @@
+{
+ "doctype": "DocType",
+ "name": "Temperature Reading",
+ "module": "Inventory",
+ "custom": 0,
+ "istable": 1,
+ "fields": [
+  {"fieldname": "reading_time", "fieldtype": "Time", "label": "Time", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "temperature_c", "fieldtype": "Float", "label": "Temperature (°C)", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "recorded_by", "fieldtype": "Data", "label": "Recorded By"}
+ ]
+}

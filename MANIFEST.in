@@ -1,0 +1,2 @@
+include MANIFEST.in
+recursive-include dairy_management *.json *.js *.css *.html *.py *.txt *.md

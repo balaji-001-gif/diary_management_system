@@ -1,0 +1,14 @@
+{
+ "doctype": "Report",
+ "name": "Processing Yield Report",
+ "report_name": "Processing Yield Report",
+ "report_type": "Script Report",
+ "ref_doctype": "Batch Production",
+ "is_standard": "Yes",
+ "module": "Processing",
+ "filters": [
+  {"fieldname": "product", "label": "Product", "fieldtype": "Link", "options": "Item"},
+  {"fieldname": "from_date", "label": "From Date", "fieldtype": "Date"},
+  {"fieldname": "to_date", "label": "To Date", "fieldtype": "Date"}
+ ]
+}

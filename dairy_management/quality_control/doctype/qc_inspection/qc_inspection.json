@@ -1,0 +1,25 @@
+{
+ "doctype": "DocType",
+ "name": "QC Inspection",
+ "module": "Quality Control",
+ "custom": 0,
+ "is_submittable": 1,
+ "autoname": "naming_series:",
+ "naming_series_options": "QCI-.YYYY.-.####",
+ "description": "Finished product QC inspection linked to Batch Production",
+ "fields": [
+  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "QCI-.YYYY.-.####"},
+  {"fieldname": "batch_production", "fieldtype": "Link", "label": "Batch Production", "options": "Batch Production", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "template", "fieldtype": "Link", "label": "QC Template", "options": "Lab Test Template"},
+  {"fieldname": "inspection_date", "fieldtype": "Date", "label": "Inspection Date", "reqd": 1, "default": "Today"},
+  {"fieldname": "inspector", "fieldtype": "Link", "label": "Inspector", "options": "Employee"},
+  {"fieldname": "sec_results", "fieldtype": "Section Break", "label": "Results"},
+  {"fieldname": "results", "fieldtype": "Table", "label": "Test Results", "options": "QC Result"},
+  {"fieldname": "overall_result", "fieldtype": "Select", "label": "Overall Result", "options": "Pass\nFail\nConditional Release", "in_list_view": 1},
+  {"fieldname": "quality_inspection", "fieldtype": "Link", "label": "ERPNext Quality Inspection", "options": "Quality Inspection", "read_only": 1}
+ ],
+ "permissions": [
+  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
+  {"role": "Lab Technician", "read": 1, "write": 1, "create": 1, "submit": 1}
+ ]
+}

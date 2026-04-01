@@ -1,0 +1,27 @@
+{
+ "doctype": "DocType",
+ "name": "Shift Summary",
+ "module": "Milk Collection",
+ "custom": 0,
+ "is_submittable": 0,
+ "autoname": "naming_series:",
+ "naming_series_options": "SS-.YYYY.MM.DD.-.##",
+ "description": "Daily aggregation of collection entries per route/shift",
+ "fields": [
+  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "SS-.YYYY.MM.DD.-.##"},
+  {"fieldname": "route", "fieldtype": "Link", "label": "Milk Route", "options": "Milk Route", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "collection_date", "fieldtype": "Date", "label": "Collection Date", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "shift", "fieldtype": "Select", "label": "Shift", "options": "Morning\nEvening", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "sec_totals", "fieldtype": "Section Break", "label": "Totals"},
+  {"fieldname": "total_quantity_litres", "fieldtype": "Float", "label": "Total Quantity (Litres)"},
+  {"fieldname": "avg_fat_percentage", "fieldtype": "Float", "label": "Avg Fat %"},
+  {"fieldname": "col_snf", "fieldtype": "Column Break"},
+  {"fieldname": "avg_snf_percentage", "fieldtype": "Float", "label": "Avg SNF %"},
+  {"fieldname": "farmer_count", "fieldtype": "Int", "label": "No. of Farmers"},
+  {"fieldname": "total_amount", "fieldtype": "Currency", "label": "Total Amount"}
+ ],
+ "permissions": [
+  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1},
+  {"role": "Milk Collection Supervisor", "read": 1}
+ ]
+}

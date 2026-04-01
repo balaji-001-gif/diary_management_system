@@ -1,0 +1,28 @@
+{
+ "doctype": "DocType",
+ "name": "Batch Production",
+ "module": "Processing",
+ "custom": 0,
+ "is_submittable": 1,
+ "autoname": "naming_series:",
+ "naming_series_options": "BPR-.YYYY.-.####",
+ "description": "Finished goods batch produced — auto-creates Stock Entry on submit",
+ "fields": [
+  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "BPR-.YYYY.-.####"},
+  {"fieldname": "processing_order", "fieldtype": "Link", "label": "Processing Order", "options": "Processing Order", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "product", "fieldtype": "Link", "label": "Product", "options": "Item", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "batch_no", "fieldtype": "Data", "label": "Internal Batch No.", "in_list_view": 1},
+  {"fieldname": "production_date", "fieldtype": "Date", "label": "Production Date", "reqd": 1, "default": "Today"},
+  {"fieldname": "sec_qty", "fieldtype": "Section Break", "label": "Quantity & Yield"},
+  {"fieldname": "quantity_produced", "fieldtype": "Float", "label": "Quantity Produced", "reqd": 1},
+  {"fieldname": "raw_milk_used_litres", "fieldtype": "Float", "label": "Raw Milk Used (Litres)"},
+  {"fieldname": "col_yield", "fieldtype": "Column Break"},
+  {"fieldname": "yield_percentage", "fieldtype": "Float", "label": "Yield %", "read_only": 1},
+  {"fieldname": "expiry_date", "fieldtype": "Date", "label": "Expiry Date"},
+  {"fieldname": "target_warehouse", "fieldtype": "Link", "label": "Target Warehouse", "options": "Warehouse"},
+  {"fieldname": "stock_entry", "fieldtype": "Link", "label": "Stock Entry", "options": "Stock Entry", "read_only": 1}
+ ],
+ "permissions": [
+  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "amend": 1}
+ ]
+}
