@@ -3,7 +3,7 @@
  "name": "Processing Yield Report",
  "report_name": "Processing Yield Report",
  "report_type": "Script Report",
- "ref_doctype": "",
+ "ref_doctype": "Batch Production",
  "is_standard": "Yes",
  "module": "Processing",
  "filters": [

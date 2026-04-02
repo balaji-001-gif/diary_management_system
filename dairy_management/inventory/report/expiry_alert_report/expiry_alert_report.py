@@ -18,6 +18,7 @@ def get_columns():
     ]
 
 def get_data(filters):
+    if not filters: filters = {}
     threshold = filters.get("days_to_expiry", 30)
 
     return frappe.db.sql("""

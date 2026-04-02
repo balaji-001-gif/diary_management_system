@@ -21,6 +21,7 @@ def get_columns():
     ]
 
 def get_data(filters):
+    if not filters: filters = {}
     conditions = "docstatus = 1"
     values = {}
 

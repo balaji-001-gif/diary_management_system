@@ -3,7 +3,7 @@
  "name": "Milk Procurement Summary",
  "report_name": "Milk Procurement Summary",
  "report_type": "Script Report",
- "ref_doctype": "",
+ "ref_doctype": "Milk Collection Entry",
  "is_standard": "Yes",
  "module": "Milk Collection",
  "filters": [

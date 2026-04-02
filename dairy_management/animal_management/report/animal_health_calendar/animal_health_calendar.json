@@ -3,7 +3,7 @@
  "name": "Animal Health Calendar",
  "report_name": "Animal Health Calendar",
  "report_type": "Script Report",
- "ref_doctype": "",
+ "ref_doctype": "Health Record",
  "is_standard": "Yes",
  "module": "Animal Management",
  "filters": [

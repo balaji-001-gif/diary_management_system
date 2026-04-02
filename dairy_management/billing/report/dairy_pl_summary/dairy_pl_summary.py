@@ -15,6 +15,7 @@ def get_columns():
     ]
 
 def get_data(filters):
+    if not filters: filters = {}
     conditions = "bp.docstatus = 1"
     values = {}
 

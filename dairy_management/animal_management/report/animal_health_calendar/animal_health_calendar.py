@@ -16,6 +16,7 @@ def get_columns():
     ]
 
 def get_data(filters):
+    if not filters: filters = {}
     conditions = "docstatus = 1 AND next_due_date IS NOT NULL"
     values = {}
 

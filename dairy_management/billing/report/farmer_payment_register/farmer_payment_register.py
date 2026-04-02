@@ -19,6 +19,7 @@ def get_columns():
     ]
 
 def get_data(filters):
+    if not filters: filters = {}
     conditions = "docstatus IN (0,1)"
     values = {}
 

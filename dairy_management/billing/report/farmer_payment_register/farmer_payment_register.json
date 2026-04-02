@@ -3,7 +3,7 @@
  "name": "Farmer Payment Register",
  "report_name": "Farmer Payment Register",
  "report_type": "Script Report",
- "ref_doctype": "",
+ "ref_doctype": "Farmer Invoice",
  "is_standard": "Yes",
  "module": "Billing",
  "filters": [
