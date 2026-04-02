@@ -153,16 +153,16 @@ def create_entities():
         {"farmer_code": "FRM-003", "name": "Suresh Patil", "village": "North Valley", "route": "North Valley Route"}
     ]
     for fd in farmers_data:
-        if not frappe.db.exists("Farmer", fd["farmer_code"]):
-            # Create ERPNext Supplier
-            if not frappe.db.exists("Supplier", fd["name"]):
-                frappe.get_doc({
-                    "doctype": "Supplier",
-                    "supplier_name": fd["name"],
-                    "supplier_group": "Dairy Farmers",
-                    "supplier_type": "Individual"
-                }).insert(ignore_permissions=True)
+        # Create ERPNext Supplier if missing
+        if not frappe.db.exists("Supplier", fd["name"]):
+            frappe.get_doc({
+                "doctype": "Supplier",
+                "supplier_name": fd["name"],
+                "supplier_group": "Dairy Farmers",
+                "supplier_type": "Individual"
+            }).insert(ignore_permissions=True)
             
+        if not frappe.db.exists("Farmer", fd["farmer_code"]):
             frappe.get_doc({
                 "doctype": "Farmer",
                 "farmer_code": fd["farmer_code"],
@@ -171,6 +171,9 @@ def create_entities():
                 "village": fd["village"],
                 "route": fd["route"]
             }).insert()
+        else:
+            # Repair existing farmer if supplier link is missing
+            frappe.db.set_value("Farmer", fd["farmer_code"], "supplier", fd["name"])
 
     # Animals
     animals_data = [
