@@ -1,7 +1,9 @@
 [
   {
     "doctype": "Module Def",
+    "name": "Dairy Management",
     "module_name": "Dairy Management",
-    "app_name": "dairy_management"
+    "app_name": "dairy_management",
+    "custom": 1
   }
 ]
