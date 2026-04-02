@@ -27,6 +27,10 @@ fixtures = [
     "Custom Field",
     "Property Setter",
     {
+        "dt": "Module Def",
+        "filters": [["module_name", "=", "Dairy Management"]]
+    },
+    {
         "dt": "Workspace",
         "filters": [
             ["name", "=", "Dairy Management"]
