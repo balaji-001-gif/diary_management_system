@@ -243,6 +243,11 @@ def populate_transactions():
 
     # 3. Batch Production (Processing)
     print("--- 🧪 Seeding Production Batches...")
+    
+    company = frappe.db.get_value("Company", {}, "name")
+    company_abbr = frappe.db.get_value("Company", company, "abbr")
+    target_warehouse = f"Finished Goods - {company_abbr}"
+
     if not frappe.db.exists("Product Formula", "Full Cream Milk"):
         frappe.get_doc({
             "doctype": "Product Formula",
