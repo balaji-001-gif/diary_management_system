@@ -120,5 +120,16 @@
     "fieldtype": "Int",
     "insert_after": "snf_content",
     "module": "Dairy Management"
+  },
+  {
+    "name": "Work Order-processing_order",
+    "doctype": "Custom Field",
+    "dt": "Work Order",
+    "fieldname": "processing_order",
+    "label": "Processing Order",
+    "fieldtype": "Link",
+    "options": "Processing Order",
+    "insert_after": "bom_no",
+    "module": "Dairy Management"
   }
 ]
