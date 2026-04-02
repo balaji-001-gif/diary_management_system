@@ -1,67 +1,260 @@
 
 import frappe
+from frappe.utils import add_days, today, flt, getdate
+import random
 
 def load_demo_data():
-    """Populate sample data for Dairy Management System"""
-    print("Loading Demo Data...")
+    """Populate comprehensive sample data for the Dairy Management System."""
+    print("🚀 Starting Comprehensive Demo Data Seeding...")
     
-    # 1. Breeds
-    breeds_to_create = [
+    # 0. ERPNext Infrastructure Prerequisites
+    create_erpnext_prerequisites()
+    
+    # 1. Core Configuration Masters
+    create_core_masters()
+    
+    # 2. Entity Masters (Farmers, Routes, Animals)
+    create_entities()
+    
+    # 3. Last 30 Days of Transactions
+    populate_transactions()
+
+    frappe.db.commit()
+    print("✅ Full-Stack Demo Data Loaded Successfully!")
+
+def create_erpnext_prerequisites():
+    print("--- 📦 Seeding ERPNext Prerequisites...")
+    
+    # UOM
+    if not frappe.db.exists("UOM", "Litre"):
+        frappe.get_doc({"doctype": "UOM", "uom_name": "Litre", "must_be_whole_number": 0}).insert(ignore_permissions=True)
+        
+    # Item Group
+    if not frappe.db.exists("Item Group", "Dairy Products"):
+        frappe.get_doc({"doctype": "Item Group", "item_group_name": "Dairy Products", "parent_item_group": "All Item Groups"}).insert(ignore_permissions=True)
+
+    # Warehouse
+    if not frappe.db.exists("Warehouse", "Finished Goods - DM"):
+        frappe.get_doc({"doctype": "Warehouse", "warehouse_name": "Finished Goods", "is_group": 0, "parent_warehouse": "All Warehouses"}).insert(ignore_permissions=True)
+
+    # Items
+    items = [
+        {"item_code": "Raw Milk", "item_name": "Raw Milk", "item_group": "Dairy Products", "stock_uom": "Litre", "is_stock_item": 1},
+        {"item_code": "Full Cream Milk", "item_name": "Full Cream Milk", "item_group": "Dairy Products", "stock_uom": "Litre", "is_stock_item": 1},
+        {"item_code": "Skimmed Milk", "item_name": "Skimmed Milk", "item_group": "Dairy Products", "stock_uom": "Litre", "is_stock_item": 1},
+        {"item_code": "Curd", "item_name": "Curd", "item_group": "Dairy Products", "stock_uom": "Nos", "is_stock_item": 1}
+    ]
+    for i in items:
+        if not frappe.db.exists("Item", i["item_code"]):
+            frappe.get_doc({"doctype": "Item", **i}).insert(ignore_permissions=True)
+
+    # Supplier Group
+    if not frappe.db.exists("Supplier Group", "Dairy Farmers"):
+        frappe.get_doc({"doctype": "Supplier Group", "supplier_group_name": "Dairy Farmers"}).insert(ignore_permissions=True)
+
+def create_core_masters():
+    print("--- 🛠️ Seeding Core DM Masters...")
+    
+    # Deduction Master
+    deductions = [
+        {"deduction_name": "Feed Loan Recovery", "description": "Weekly recovery for cattle feed supply"},
+        {"deduction_name": "Membership Fee", "description": "Annual cooperative membership"},
+        {"deduction_name": "Cattle Insurance", "description": "Monthly premium for animal health insurance"}
+    ]
+    for d in deductions:
+        if not frappe.db.exists("Deduction Master", d["deduction_name"]):
+            frappe.get_doc({"doctype": "Deduction Master", **d}).insert()
+
+    # Quality Parameters
+    params = [
+        {"parameter_name": "Fat %", "unit": "%", "minimum_value": 3.0, "maximum_value": 10.0},
+        {"parameter_name": "SNF %", "unit": "%", "minimum_value": 8.0, "maximum_value": 12.0},
+        {"parameter_name": "Bacteria Count", "unit": "CFU/ml", "minimum_value": 0, "maximum_value": 50000}
+    ]
+    for p in params:
+        if not frappe.db.exists("Quality Check Parameter", p["parameter_name"]):
+            frappe.get_doc({"doctype": "Quality Check Parameter", **p}).insert()
+
+    # Rate Slab
+    if not frappe.db.exists("Rate Slab", "Standard Quality Slab"):
+        slab = frappe.get_doc({
+            "doctype": "Rate Slab",
+            "slab_name": "Standard Quality Slab",
+            "effective_from": add_days(today(), -365),
+            "effective_to": add_days(today(), 365),
+            "base_rate": 35.0,
+            "fat_snf_matrix": [
+                {"fat_from": 3.0, "fat_to": 4.5, "snf_from": 8.0, "snf_to": 8.5, "rate_per_litre": 38.0},
+                {"fat_from": 4.5, "fat_to": 6.0, "snf_from": 8.5, "snf_to": 9.0, "rate_per_litre": 42.0},
+                {"fat_from": 6.0, "fat_to": 10.0, "snf_from": 9.0, "snf_to": 12.0, "rate_per_litre": 48.0}
+            ]
+        })
+        slab.insert()
+
+    # Breed
+    breeds = [
         {"breed_name": "Holstein Friesian", "avg_daily_yield_litres": 25, "standard_lactation_days": 305, "avg_fat_percentage": 3.7},
         {"breed_name": "Jersey", "avg_daily_yield_litres": 18, "standard_lactation_days": 305, "avg_fat_percentage": 4.8},
         {"breed_name": "Gir", "avg_daily_yield_litres": 12, "standard_lactation_days": 280, "avg_fat_percentage": 4.5}
     ]
-    for b in breeds_to_create:
+    for b in breeds:
         if not frappe.db.exists("Breed", b["breed_name"]):
-            doc = frappe.get_doc({"doctype": "Breed", **b})
-            doc.insert()
-            print(f"Created Breed: {b['breed_name']}")
+            frappe.get_doc({"doctype": "Breed", **b}).insert()
 
-    # 2. Collection Centers
-    centers = ["Center A", "Center B"]
+def create_entities():
+    print("--- 🐄 Seeding Farmers & Animals...")
+    
+    # Collection Centers
+    centers = ["Main Collection Hub", "East Village Center"]
     for c in centers:
         if not frappe.db.exists("Collection Center", c):
-            doc = frappe.get_doc({"doctype": "Collection Center", "center_name": c})
-            doc.insert()
-            print(f"Created Center: {c}")
+            frappe.get_doc({"doctype": "Collection Center", "center_name": c}).insert()
 
-    # 3. Milk Routes
+    # Milk Routes
     routes = [
-        {"route_name": "North Route", "collection_center": "Center A", "distance_km": 15},
-        {"route_name": "South Route", "collection_center": "Center B", "distance_km": 22}
+        {"route_name": "North Valley Route", "collection_center": "Main Collection Hub", "distance_km": 15},
+        {"route_name": "Green Ridge Route", "collection_center": "East Village Center", "distance_km": 22}
     ]
     for r in routes:
         if not frappe.db.exists("Milk Route", r["route_name"]):
-            doc = frappe.get_doc({"doctype": "Milk Route", **r})
-            doc.insert()
-            print(f"Created Route: {r['route_name']}")
+            frappe.get_doc({"doctype": "Milk Route", **r}).insert()
 
-    # 4. Farmers
-    farmers_to_create = [
-        {"farmer_code": "F001", "farmer_name": "John Doe", "village": "Village 1", "route": "North Route"},
-        {"farmer_code": "F002", "farmer_name": "Jane Smith", "village": "Village 2", "route": "South Route"}
+    # Farmers
+    farmers_data = [
+        {"farmer_code": "FRM-001", "name": "Rajesh Kumar", "village": "North Valley", "route": "North Valley Route"},
+        {"farmer_code": "FRM-002", "name": "Anita Devi", "village": "Green Ridge", "route": "Green Ridge Route"},
+        {"farmer_code": "FRM-003", "name": "Suresh Patil", "village": "North Valley", "route": "North Valley Route"}
     ]
-    for f in farmers_to_create:
-        if not frappe.db.exists("Farmer", f["farmer_code"]):
-            doc = frappe.get_doc({"doctype": "Farmer", **f})
-            doc.insert()
-            print(f"Created Farmer: {f['farmer_name']}")
+    for fd in farmers_data:
+        if not frappe.db.exists("Farmer", fd["farmer_code"]):
+            # Create ERPNext Supplier
+            if not frappe.db.exists("Supplier", fd["name"]):
+                frappe.get_doc({
+                    "doctype": "Supplier",
+                    "supplier_name": fd["name"],
+                    "supplier_group": "Dairy Farmers",
+                    "supplier_type": "Individual"
+                }).insert(ignore_permissions=True)
+            
+            frappe.get_doc({
+                "doctype": "Farmer",
+                "farmer_code": fd["farmer_code"],
+                "farmer_name": fd["name"],
+                "supplier": fd["name"],
+                "village": fd["village"],
+                "route": fd["route"]
+            }).insert()
 
-    # 5. Animals
-    animals_to_create = [
-        {"animal_id": "TAG-101", "animal_name": "Bessie", "breed": "Holstein Friesian", "sex": "Female", "status": "Active", "farmer": "F001"},
-        {"animal_id": "TAG-102", "animal_name": "Daisy", "breed": "Jersey", "sex": "Female", "status": "Active", "farmer": "F002"}
+    # Animals
+    animals_data = [
+        {"animal_id": "TAG-1001", "name": "Ganga", "breed": "Gir", "farmer": "FRM-001"},
+        {"animal_id": "TAG-1002", "name": "Yamuna", "breed": "Holstein Friesian", "farmer": "FRM-002"},
+        {"animal_id": "TAG-1003", "name": "Kavery", "breed": "Jersey", "farmer": "FRM-003"}
     ]
-    for a in animals_to_create:
-        if not frappe.db.exists("Animal", {"animal_id": a["animal_id"]}):
-            # We need to manually set naming_series for Animal since it uses autoname
-            doc = frappe.get_doc({
+    for ad in animals_data:
+        if not frappe.db.exists("Animal", {"animal_id": ad["animal_id"]}):
+            frappe.get_doc({
                 "doctype": "Animal",
                 "naming_series": "ANM-.YYYY.-.####",
-                **a
-            })
-            doc.insert()
-            print(f"Created Animal: {a['animal_name']}")
+                "animal_id": ad["animal_id"],
+                "animal_name": ad["name"],
+                "breed": ad["breed"],
+                "sex": "Female",
+                "status": "Active",
+                "farmer": ad["farmer"]
+            }).insert()
 
-    frappe.db.commit()
-    print("Demo Data Loaded Successfully!")
+def populate_transactions():
+    print("--- 📊 Seeding Last 30 Days of Transactions...")
+    
+    farmers = frappe.get_all("Farmer", pluck="name")
+    animals = frappe.get_all("Animal", pluck="name")
+    
+    for i in range(1, 31):
+        trans_date = add_days(today(), -i)
+        
+        # 1. Health Records (Every few days for random animals)
+        if i % 5 == 0:
+            target_animal = random.choice(animals)
+            hr = frappe.get_doc({
+                "doctype": "Health Record",
+                "animal": target_animal,
+                "date": trans_date,
+                "event_type": "Checkup",
+                "disease_condition": "Routine Deworming",
+                "medicine": "Albendazole",
+                "cost": 150.0
+            })
+            hr.insert()
+            if i % 10 == 0: hr.submit() # Mix of Submit and Draft
+
+        # 2. Milk Collection Entries (Daily for all farmers)
+        for f_code in farmers:
+            farmer_doc = frappe.get_doc("Farmer", f_code)
+            for shift in ["Morning", "Evening"]:
+                qty = flt(random.uniform(5.5, 12.0), 2)
+                fat = flt(random.uniform(4.0, 7.5), 2)
+                snf = flt(random.uniform(8.5, 9.5), 2)
+                
+                mce = frappe.get_doc({
+                    "doctype": "Milk Collection Entry",
+                    "farmer": f_code,
+                    "route": farmer_doc.route,
+                    "collection_date": trans_date,
+                    "shift": shift,
+                    "quantity_litres": qty,
+                    "fat_percentage": fat,
+                    "snf_percentage": snf,
+                    "grade": "Grade A",
+                    "rate_per_litre": 42.0,
+                    "amount": qty * 42.0
+                })
+                mce.insert()
+                # Submit most entries to populate reports, keep last 2 days as Drafts
+                if i > 2:
+                    mce.submit()
+
+    # 3. Batch Production (Processing)
+    print("--- 🧪 Seeding Production Batches...")
+    if not frappe.db.exists("Product Formula", "Full Cream Milk"):
+        frappe.get_doc({
+            "doctype": "Product Formula",
+            "product": "Full Cream Milk",
+            "processing_type": "Full Cream",
+            "raw_milk_litres_per_unit": 0.98,
+            "cream_ratio": 0.05
+        }).insert()
+
+    for i in [15, 7, 2]: # Three sample production batches
+        p_date = add_days(today(), -i)
+        bp = frappe.get_doc({
+            "doctype": "Batch Production",
+            "product": "Full Cream Milk",
+            "production_date": p_date,
+            "quantity_produced": 500,
+            "raw_milk_used_litres": 490,
+            "target_warehouse": "Finished Goods"
+        })
+        bp.insert()
+        if i > 5: bp.submit()
+
+    # 4. Billing (Farmer Invoices)
+    print("--- 💰 Seeding Farmer Invoices...")
+    one_month_ago = add_days(today(), -30)
+    for f_code in farmers:
+        finv = frappe.get_doc({
+            "doctype": "Farmer Invoice",
+            "farmer": f_code,
+            "period_from": add_days(one_month_ago, 1),
+            "period_to": today(),
+            "total_litres_supplied": 240,
+            "gross_amount": 10000,
+            "total_deductions": 500,
+            "net_payable": 9500
+        })
+        finv.insert()
+        # Keep latest invoice as draft, others submitted
+        if random.random() > 0.3:
+            finv.submit()
+            # Integration logic usually would create Purchase Invoice here via server-side hook
+            # but we just seed the FINV for demo purposes.
