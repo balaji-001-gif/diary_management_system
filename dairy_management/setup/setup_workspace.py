@@ -97,6 +97,11 @@ def execute():
                 {"type": "link", "label": "Farmer Payment Register", "link_to": "Farmer Payment Register", "link_type": "Report"},
                 {"type": "link", "label": "Dairy PL Summary", "link_to": "Dairy PL Summary", "link_type": "Report"}
             ]}}
+        ],
+        "Settings": [
+            {"id": "s88119ae", "type": "card", "data": {"card_name": "Settings", "links": [
+                {"type": "link", "label": "Dairy Management Settings", "link_to": "Dairy Management Settings", "link_type": "DocType"}
+            ]}}
         ]
     }
 

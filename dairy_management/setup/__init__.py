@@ -75,6 +75,12 @@ def create_erpnext_prerequisites():
     if not frappe.db.exists("Supplier Group", "Dairy Farmers"):
         frappe.get_doc({"doctype": "Supplier Group", "supplier_group_name": "Dairy Farmers"}).insert(ignore_permissions=True)
 
+    # Initial Settings
+    settings = frappe.get_single("Dairy Management Settings")
+    settings.raw_milk_item = "Raw Milk"
+    settings.raw_milk_warehouse = f"Finished Goods - {company_abbr}"
+    settings.save()
+
 def create_core_masters():
     print("--- 🛠️ Seeding Core DM Masters...")
     

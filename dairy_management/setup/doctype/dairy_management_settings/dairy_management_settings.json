@@ -1,0 +1,43 @@
+{
+ "doctype": "DocType",
+ "name": "Dairy Management Settings",
+ "module": "Dairy Management",
+ "custom": 0,
+ "issingle": 1,
+ "description": "Global configuration for Dairy Management System",
+ "fields": [
+  {
+   "fieldname": "raw_milk_item",
+   "fieldtype": "Link",
+   "label": "Raw Milk Item",
+   "options": "Item",
+   "reqd": 1,
+   "description": "Standard item for raw milk procurement"
+  },
+  {
+   "fieldname": "raw_milk_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Raw Milk Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "finished_goods_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Finished Goods Warehouse",
+   "options": "Warehouse"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1
+  }
+ ]
+}
