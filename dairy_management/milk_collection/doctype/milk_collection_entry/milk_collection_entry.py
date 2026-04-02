@@ -26,3 +26,8 @@ class MilkCollectionEntry(Document):
             qc.snf = self.snf_percentage
             qc.insert(ignore_permissions=True)
             frappe.msgprint(f"Milk Quality Test {qc.name} auto-created.", alert=True)
+
+def on_submit(doc, method=None):
+    """Module-level fallback to satisfy stale hooks.py cache if bench hasn"t restarted."""
+    if hasattr(doc, "on_submit"):
+        doc.on_submit()

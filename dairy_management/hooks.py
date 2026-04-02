@@ -61,22 +61,6 @@ scheduler_events = {
 
 # ── Document Events ───────────────────────────────────────────────────────────
 doc_events = {
-    "Milk Collection Entry": {
-        "before_save": "dairy_management.utils.calculations.calculate_collection_amount",
-        "on_submit": "dairy_management.milk_collection.doctype.milk_collection_entry.milk_collection_entry.on_submit",
-    },
-    "Batch Production": {
-        "on_submit": "dairy_management.processing.doctype.batch_production.batch_production.on_submit",
-    },
-    "Milk Procurement": {
-        "on_submit": "dairy_management.procurement.doctype.milk_procurement.milk_procurement.on_submit",
-    },
-    "Farmer Invoice": {
-        "on_submit": "dairy_management.billing.doctype.farmer_invoice.farmer_invoice.on_submit",
-    },
-    "Processing Order": {
-        "on_submit": "dairy_management.processing.doctype.processing_order.processing_order.on_submit",
-    },
 }
 
 # ── Website ───────────────────────────────────────────────────────────────────

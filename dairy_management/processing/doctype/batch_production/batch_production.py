@@ -31,3 +31,8 @@ class BatchProduction(Document):
             frappe.msgprint(f"Stock Entry {se.name} created.", alert=True)
         except Exception as e:
             frappe.log_error(str(e), "Batch Production: Stock Entry Creation Failed")
+
+def on_submit(doc, method=None):
+    """Module-level fallback to satisfy stale hooks.py cache if bench hasn"t restarted."""
+    if hasattr(doc, "on_submit"):
+        doc.on_submit()

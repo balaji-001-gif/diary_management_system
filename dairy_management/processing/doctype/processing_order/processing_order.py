@@ -22,3 +22,8 @@ class ProcessingOrder(Document):
             frappe.msgprint(f"Work Order {wo.name} created.", alert=True)
         except Exception as e:
             frappe.log_error(str(e), "Processing Order: Work Order Creation Failed")
+
+def on_submit(doc, method=None):
+    """Module-level fallback to satisfy stale hooks.py cache if bench hasn"t restarted."""
+    if hasattr(doc, "on_submit"):
+        doc.on_submit()

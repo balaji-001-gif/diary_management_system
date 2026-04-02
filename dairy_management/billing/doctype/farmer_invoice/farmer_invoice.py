@@ -35,3 +35,8 @@ class FarmerInvoice(Document):
             frappe.msgprint(f"Purchase Invoice {pi.name} created.", alert=True)
         except Exception as e:
             frappe.log_error(str(e), "Farmer Invoice: PI Creation Failed")
+
+def on_submit(doc, method=None):
+    """Module-level fallback to satisfy stale hooks.py cache if bench hasn"t restarted."""
+    if hasattr(doc, "on_submit"):
+        doc.on_submit()
