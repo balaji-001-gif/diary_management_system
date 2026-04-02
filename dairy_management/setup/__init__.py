@@ -80,23 +80,27 @@ def create_core_masters():
     
     # Deduction Master
     deductions = [
-        {"deduction_name": "Feed Loan Recovery", "description": "Weekly recovery for cattle feed supply"},
-        {"deduction_name": "Membership Fee", "description": "Annual cooperative membership"},
-        {"deduction_name": "Cattle Insurance", "description": "Monthly premium for animal health insurance"}
+        {"deduction_type": "Feed Loan Recovery", "description": "Weekly recovery for cattle feed supply"},
+        {"deduction_type": "Membership Fee", "description": "Annual cooperative membership"},
+        {"deduction_type": "Cattle Insurance", "description": "Monthly premium for animal health insurance"}
     ]
     for d in deductions:
-        if not frappe.db.exists("Deduction Master", d["deduction_name"]):
+        if not frappe.db.exists("Deduction Master", d["deduction_type"]):
             frappe.get_doc({"doctype": "Deduction Master", **d}).insert()
 
-    # Quality Parameters
-    params = [
-        {"parameter_name": "Fat %", "unit": "%", "minimum_value": 3.0, "maximum_value": 10.0},
-        {"parameter_name": "SNF %", "unit": "%", "minimum_value": 8.0, "maximum_value": 12.0},
-        {"parameter_name": "Bacteria Count", "unit": "CFU/ml", "minimum_value": 0, "maximum_value": 50000}
-    ]
-    for p in params:
-        if not frappe.db.exists("Quality Check Parameter", p["parameter_name"]):
-            frappe.get_doc({"doctype": "Quality Check Parameter", **p}).insert()
+    # Lab Test Template (contains child table Quality Check Parameter)
+    template_name = "Standard Raw Milk Test"
+    if not frappe.db.exists("Lab Test Template", template_name):
+        frappe.get_doc({
+            "doctype": "Lab Test Template",
+            "template_name": template_name,
+            "product_category": "Dairy Products",
+            "parameters": [
+                {"parameter_name": "Fat %", "unit": "%", "min_acceptable": 3.0, "max_acceptable": 10.0, "mandatory": 1},
+                {"parameter_name": "SNF %", "unit": "%", "min_acceptable": 8.0, "max_acceptable": 12.0, "mandatory": 1},
+                {"parameter_name": "Bacteria Count", "unit": "CFU/ml", "min_acceptable": 0, "max_acceptable": 50000}
+            ]
+        }).insert()
 
     # Rate Slab
     if not frappe.db.exists("Rate Slab", "Standard Quality Slab"):
