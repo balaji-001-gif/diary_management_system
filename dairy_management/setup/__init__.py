@@ -265,7 +265,7 @@ def populate_transactions():
             "production_date": p_date,
             "quantity_produced": 500,
             "raw_milk_used_litres": 490,
-            "target_warehouse": "Finished Goods"
+            "target_warehouse": target_warehouse
         })
         bp.insert()
         if i > 5: bp.submit()
