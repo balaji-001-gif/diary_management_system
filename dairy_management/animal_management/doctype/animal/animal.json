@@ -7,27 +7,126 @@
  "naming_rule": "Expression",
  "autoname": "naming_series:",
  "naming_series_options": "ANM-.YYYY.-.####",
- "description": "Central herd register — one record per animal",
+ "description": "Central herd register \u2014 one record per animal",
  "title_field": "animal_name",
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "ANM-.YYYY.-.####", "reqd": 1},
-  {"fieldname": "animal_id", "fieldtype": "Data", "label": "Ear Tag / RFID", "reqd": 1, "unique": 1, "in_list_view": 1},
-  {"fieldname": "animal_name", "fieldtype": "Data", "label": "Animal Name", "in_list_view": 1},
-  {"fieldname": "col_breed_status", "fieldtype": "Column Break"},
-  {"fieldname": "breed", "fieldtype": "Link", "label": "Breed", "options": "Breed", "in_list_view": 1},
-  {"fieldname": "date_of_birth", "fieldtype": "Date", "label": "Date of Birth"},
-  {"fieldname": "sex", "fieldtype": "Select", "label": "Sex", "options": "Male\nFemale", "reqd": 1},
-  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Active\nDry\nSold\nDead", "default": "Active", "in_list_view": 1, "reqd": 1},
-  {"fieldname": "sec_owner", "fieldtype": "Section Break", "label": "Ownership"},
-  {"fieldname": "current_lactation", "fieldtype": "Int", "label": "Current Lactation No."},
-  {"fieldname": "farmer", "fieldtype": "Link", "label": "Farmer / Owner", "options": "Farmer"},
-  {"fieldname": "col_purchase", "fieldtype": "Column Break"},
-  {"fieldname": "purchase_date", "fieldtype": "Date", "label": "Purchase Date"},
-  {"fieldname": "purchase_price", "fieldtype": "Currency", "label": "Purchase Price"}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "ANM-.YYYY.-.####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "animal_id",
+   "fieldtype": "Data",
+   "label": "Ear Tag / RFID",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "animal_name",
+   "fieldtype": "Data",
+   "label": "Animal Name",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col_breed_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "breed",
+   "fieldtype": "Link",
+   "label": "Breed",
+   "options": "Breed",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "sex",
+   "fieldtype": "Select",
+   "label": "Sex",
+   "options": "Male\nFemale",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nDry\nSold\nDead",
+   "default": "Active",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "sec_owner",
+   "fieldtype": "Section Break",
+   "label": "Ownership"
+  },
+  {
+   "fieldname": "current_lactation",
+   "fieldtype": "Int",
+   "label": "Current Lactation No."
+  },
+  {
+   "fieldname": "farmer",
+   "fieldtype": "Link",
+   "label": "Farmer / Owner",
+   "options": "Farmer"
+  },
+  {
+   "fieldname": "col_purchase",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "purchase_date",
+   "fieldtype": "Date",
+   "label": "Purchase Date"
+  },
+  {
+   "fieldname": "purchase_price",
+   "fieldtype": "Currency",
+   "label": "Purchase Price"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "Milk Collection Supervisor", "read": 1},
-  {"role": "Route Agent", "read": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Milk Collection Supervisor",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Route Agent",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

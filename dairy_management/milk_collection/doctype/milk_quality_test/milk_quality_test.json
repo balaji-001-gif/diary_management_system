@@ -8,21 +8,107 @@
  "naming_series_options": "MQT-.YYYY.-.####",
  "description": "Lab quality test auto-created on Milk Collection Entry submit",
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "MQT-.YYYY.-.####"},
-  {"fieldname": "collection_entry", "fieldtype": "Link", "label": "Collection Entry", "options": "Milk Collection Entry", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "test_date", "fieldtype": "Date", "label": "Test Date", "reqd": 1, "default": "Today"},
-  {"fieldname": "sec_params", "fieldtype": "Section Break", "label": "Lab Parameters"},
-  {"fieldname": "fat", "fieldtype": "Float", "label": "Fat %", "in_list_view": 1},
-  {"fieldname": "snf", "fieldtype": "Float", "label": "SNF %", "in_list_view": 1},
-  {"fieldname": "protein", "fieldtype": "Float", "label": "Protein %"},
-  {"fieldname": "col_micro", "fieldtype": "Column Break"},
-  {"fieldname": "total_bacteria_count", "fieldtype": "Int", "label": "TBC (cells/ml)"},
-  {"fieldname": "somatic_cell_count", "fieldtype": "Int", "label": "SCC (cells/ml)"},
-  {"fieldname": "adulteration_passed", "fieldtype": "Check", "label": "Adulteration Check Passed"},
-  {"fieldname": "result", "fieldtype": "Select", "label": "Result", "options": "Pass\nFail\nBorderline", "in_list_view": 1}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "MQT-.YYYY.-.####"
+  },
+  {
+   "fieldname": "collection_entry",
+   "fieldtype": "Link",
+   "label": "Collection Entry",
+   "options": "Milk Collection Entry",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "test_date",
+   "fieldtype": "Date",
+   "label": "Test Date",
+   "reqd": 1,
+   "default": "Today"
+  },
+  {
+   "fieldname": "sec_params",
+   "fieldtype": "Section Break",
+   "label": "Lab Parameters"
+  },
+  {
+   "fieldname": "fat",
+   "fieldtype": "Float",
+   "label": "Fat %",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "snf",
+   "fieldtype": "Float",
+   "label": "SNF %",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "protein",
+   "fieldtype": "Float",
+   "label": "Protein %"
+  },
+  {
+   "fieldname": "col_micro",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_bacteria_count",
+   "fieldtype": "Int",
+   "label": "TBC (cells/ml)"
+  },
+  {
+   "fieldname": "somatic_cell_count",
+   "fieldtype": "Int",
+   "label": "SCC (cells/ml)"
+  },
+  {
+   "fieldname": "adulteration_passed",
+   "fieldtype": "Check",
+   "label": "Adulteration Check Passed"
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "label": "Result",
+   "options": "Pass\nFail\nBorderline",
+   "in_list_view": 1
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
-  {"role": "Lab Technician", "read": 1, "write": 1, "create": 1, "submit": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Lab Technician",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

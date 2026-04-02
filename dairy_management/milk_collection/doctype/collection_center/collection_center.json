@@ -7,13 +7,58 @@
  "autoname": "field:center_name",
  "description": "BMC or chilling center master",
  "fields": [
-  {"fieldname": "center_name", "fieldtype": "Data", "label": "Center Name", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "location", "fieldtype": "Data", "label": "Location / GPS", "in_list_view": 1},
-  {"fieldname": "bmc_capacity_litres", "fieldtype": "Float", "label": "BMC Capacity (Litres)"},
-  {"fieldname": "target_temp_c", "fieldtype": "Float", "label": "Target Temperature (°C)", "default": "4.0"}
+  {
+   "fieldname": "center_name",
+   "fieldtype": "Data",
+   "label": "Center Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location / GPS",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "bmc_capacity_litres",
+   "fieldtype": "Float",
+   "label": "BMC Capacity (Litres)"
+  },
+  {
+   "fieldname": "target_temp_c",
+   "fieldtype": "Float",
+   "label": "Target Temperature (\u00b0C)",
+   "default": "4.0"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "Milk Collection Supervisor", "read": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Milk Collection Supervisor",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

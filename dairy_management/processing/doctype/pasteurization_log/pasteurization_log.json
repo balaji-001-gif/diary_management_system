@@ -8,22 +8,112 @@
  "naming_series_options": "PAST-.YYYY.-.####",
  "description": "HTST/LTLT/UHT pasteurization parameters for traceability",
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "PAST-.YYYY.-.####"},
-  {"fieldname": "processing_order", "fieldtype": "Link", "label": "Processing Order", "options": "Processing Order", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "batch_number", "fieldtype": "Data", "label": "Batch Number", "in_list_view": 1},
-  {"fieldname": "method", "fieldtype": "Select", "label": "Method", "options": "HTST\nLTLT\nUHT\nBatch", "reqd": 1},
-  {"fieldname": "raw_milk_volume_litres", "fieldtype": "Float", "label": "Raw Milk Volume (Litres)"},
-  {"fieldname": "sec_temp", "fieldtype": "Section Break", "label": "Temperature & Time"},
-  {"fieldname": "inlet_temperature_c", "fieldtype": "Float", "label": "Inlet Temp (°C)"},
-  {"fieldname": "target_temperature_c", "fieldtype": "Float", "label": "Target Temp (°C)"},
-  {"fieldname": "col_time", "fieldtype": "Column Break"},
-  {"fieldname": "hold_time_seconds", "fieldtype": "Int", "label": "Hold Time (seconds)"},
-  {"fieldname": "outlet_temperature_c", "fieldtype": "Float", "label": "Outlet Temp (°C)"},
-  {"fieldname": "operator", "fieldtype": "Link", "label": "Operator", "options": "Employee"},
-  {"fieldname": "pass_fail", "fieldtype": "Select", "label": "Pass/Fail", "options": "Pass\nFail\nRepeat Required", "in_list_view": 1}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PAST-.YYYY.-.####"
+  },
+  {
+   "fieldname": "processing_order",
+   "fieldtype": "Link",
+   "label": "Processing Order",
+   "options": "Processing Order",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "batch_number",
+   "fieldtype": "Data",
+   "label": "Batch Number",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "method",
+   "fieldtype": "Select",
+   "label": "Method",
+   "options": "HTST\nLTLT\nUHT\nBatch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "raw_milk_volume_litres",
+   "fieldtype": "Float",
+   "label": "Raw Milk Volume (Litres)"
+  },
+  {
+   "fieldname": "sec_temp",
+   "fieldtype": "Section Break",
+   "label": "Temperature & Time"
+  },
+  {
+   "fieldname": "inlet_temperature_c",
+   "fieldtype": "Float",
+   "label": "Inlet Temp (\u00b0C)"
+  },
+  {
+   "fieldname": "target_temperature_c",
+   "fieldtype": "Float",
+   "label": "Target Temp (\u00b0C)"
+  },
+  {
+   "fieldname": "col_time",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hold_time_seconds",
+   "fieldtype": "Int",
+   "label": "Hold Time (seconds)"
+  },
+  {
+   "fieldname": "outlet_temperature_c",
+   "fieldtype": "Float",
+   "label": "Outlet Temp (\u00b0C)"
+  },
+  {
+   "fieldname": "operator",
+   "fieldtype": "Link",
+   "label": "Operator",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "pass_fail",
+   "fieldtype": "Select",
+   "label": "Pass/Fail",
+   "options": "Pass\nFail\nRepeat Required",
+   "in_list_view": 1
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
-  {"role": "Lab Technician", "read": 1, "write": 1, "create": 1, "submit": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Lab Technician",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

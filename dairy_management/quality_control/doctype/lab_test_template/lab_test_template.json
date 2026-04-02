@@ -7,14 +7,63 @@
  "autoname": "field:template_name",
  "description": "QC parameters and acceptance criteria per product category",
  "fields": [
-  {"fieldname": "template_name", "fieldtype": "Data", "label": "Template Name", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "product_category", "fieldtype": "Link", "label": "Product Category", "options": "Item Group"},
-  {"fieldname": "fssai_standard_ref", "fieldtype": "Data", "label": "FSSAI Standard Ref"},
-  {"fieldname": "sec_params", "fieldtype": "Section Break", "label": "Quality Check Parameters"},
-  {"fieldname": "parameters", "fieldtype": "Table", "label": "Parameters", "options": "Quality Check Parameter"}
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "label": "Template Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "product_category",
+   "fieldtype": "Link",
+   "label": "Product Category",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "fssai_standard_ref",
+   "fieldtype": "Data",
+   "label": "FSSAI Standard Ref"
+  },
+  {
+   "fieldname": "sec_params",
+   "fieldtype": "Section Break",
+   "label": "Quality Check Parameters"
+  },
+  {
+   "fieldname": "parameters",
+   "fieldtype": "Table",
+   "label": "Parameters",
+   "options": "Quality Check Parameter"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "Lab Technician", "read": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Lab Technician",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

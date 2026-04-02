@@ -8,22 +8,113 @@
  "naming_series_options": "BR-.YYYY.-.####",
  "description": "AI or natural breeding events, pregnancy, and calving outcomes",
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "BR-.YYYY.-.####"},
-  {"fieldname": "animal", "fieldtype": "Link", "label": "Animal (Dam)", "options": "Animal", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "breeding_date", "fieldtype": "Date", "label": "Breeding Date", "reqd": 1, "default": "Today", "in_list_view": 1},
-  {"fieldname": "method", "fieldtype": "Select", "label": "Method", "options": "Artificial Insemination\nNatural", "reqd": 1},
-  {"fieldname": "bull_semen_code", "fieldtype": "Data", "label": "Bull / Semen Code"},
-  {"fieldname": "sec_pregnancy", "fieldtype": "Section Break", "label": "Pregnancy"},
-  {"fieldname": "pregnancy_confirmed", "fieldtype": "Check", "label": "Pregnancy Confirmed"},
-  {"fieldname": "confirmation_date", "fieldtype": "Date", "label": "Confirmation Date"},
-  {"fieldname": "expected_calving", "fieldtype": "Date", "label": "Expected Calving Date"},
-  {"fieldname": "sec_calving", "fieldtype": "Section Break", "label": "Calving"},
-  {"fieldname": "calving_date", "fieldtype": "Date", "label": "Actual Calving Date"},
-  {"fieldname": "calf", "fieldtype": "Link", "label": "Calf (Animal)", "options": "Animal"},
-  {"fieldname": "calving_difficulty", "fieldtype": "Select", "label": "Calving Difficulty", "options": "\nEasy\nAssisted\nCaesarean"}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "BR-.YYYY.-.####"
+  },
+  {
+   "fieldname": "animal",
+   "fieldtype": "Link",
+   "label": "Animal (Dam)",
+   "options": "Animal",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "breeding_date",
+   "fieldtype": "Date",
+   "label": "Breeding Date",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "method",
+   "fieldtype": "Select",
+   "label": "Method",
+   "options": "Artificial Insemination\nNatural",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bull_semen_code",
+   "fieldtype": "Data",
+   "label": "Bull / Semen Code"
+  },
+  {
+   "fieldname": "sec_pregnancy",
+   "fieldtype": "Section Break",
+   "label": "Pregnancy"
+  },
+  {
+   "fieldname": "pregnancy_confirmed",
+   "fieldtype": "Check",
+   "label": "Pregnancy Confirmed"
+  },
+  {
+   "fieldname": "confirmation_date",
+   "fieldtype": "Date",
+   "label": "Confirmation Date"
+  },
+  {
+   "fieldname": "expected_calving",
+   "fieldtype": "Date",
+   "label": "Expected Calving Date"
+  },
+  {
+   "fieldname": "sec_calving",
+   "fieldtype": "Section Break",
+   "label": "Calving"
+  },
+  {
+   "fieldname": "calving_date",
+   "fieldtype": "Date",
+   "label": "Actual Calving Date"
+  },
+  {
+   "fieldname": "calf",
+   "fieldtype": "Link",
+   "label": "Calf (Animal)",
+   "options": "Animal"
+  },
+  {
+   "fieldname": "calving_difficulty",
+   "fieldtype": "Select",
+   "label": "Calving Difficulty",
+   "options": "\nEasy\nAssisted\nCaesarean"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
-  {"role": "Route Agent", "read": 1, "write": 1, "create": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Route Agent",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

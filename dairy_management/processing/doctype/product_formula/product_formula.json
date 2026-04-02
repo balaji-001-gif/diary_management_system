@@ -5,15 +5,60 @@
  "custom": 0,
  "is_submittable": 0,
  "autoname": "field:product",
- "description": "Dairy recipe master — raw material ratios per product type",
+ "description": "Dairy recipe master \u2014 raw material ratios per product type",
  "fields": [
-  {"fieldname": "product", "fieldtype": "Link", "label": "Product (Item)", "options": "Item", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "processing_type", "fieldtype": "Select", "label": "Processing Type", "options": "Full Cream\nToned\nDouble Toned\nSkimmed", "in_list_view": 1},
-  {"fieldname": "raw_milk_litres_per_unit", "fieldtype": "Float", "label": "Raw Milk Litres per Unit"},
-  {"fieldname": "cream_ratio", "fieldtype": "Float", "label": "Cream Ratio"},
-  {"fieldname": "fat_standardization_target", "fieldtype": "Float", "label": "Fat Standardization Target (%)"}
+  {
+   "fieldname": "product",
+   "fieldtype": "Link",
+   "label": "Product (Item)",
+   "options": "Item",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "processing_type",
+   "fieldtype": "Select",
+   "label": "Processing Type",
+   "options": "Full Cream\nToned\nDouble Toned\nSkimmed",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "raw_milk_litres_per_unit",
+   "fieldtype": "Float",
+   "label": "Raw Milk Litres per Unit"
+  },
+  {
+   "fieldname": "cream_ratio",
+   "fieldtype": "Float",
+   "label": "Cream Ratio"
+  },
+  {
+   "fieldname": "fat_standardization_target",
+   "fieldtype": "Float",
+   "label": "Fat Standardization Target (%)"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "delete": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

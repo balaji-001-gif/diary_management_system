@@ -7,19 +7,90 @@
  "autoname": "field:slab_name",
  "description": "Fat x SNF price matrix for milk rate calculation",
  "fields": [
-  {"fieldname": "slab_name", "fieldtype": "Data", "label": "Slab Name", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "effective_from", "fieldtype": "Date", "label": "Effective From", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "effective_to", "fieldtype": "Date", "label": "Effective To", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "col_rate", "fieldtype": "Column Break"},
-  {"fieldname": "base_rate", "fieldtype": "Currency", "label": "Base Rate (per litre)", "reqd": 1},
-  {"fieldname": "disabled", "fieldtype": "Check", "label": "Disabled"},
-  {"fieldname": "sec_incentive", "fieldtype": "Section Break", "label": "Incentive"},
-  {"fieldname": "incentive_above_fat", "fieldtype": "Float", "label": "Incentive Above Fat %"},
-  {"fieldname": "incentive_rate", "fieldtype": "Currency", "label": "Incentive Rate (per litre)"},
-  {"fieldname": "sec_matrix", "fieldtype": "Section Break", "label": "Fat × SNF Matrix"},
-  {"fieldname": "fat_snf_matrix", "fieldtype": "Table", "label": "Rate Matrix", "options": "Rate Slab Row"}
+  {
+   "fieldname": "slab_name",
+   "fieldtype": "Data",
+   "label": "Slab Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col_rate",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "base_rate",
+   "fieldtype": "Currency",
+   "label": "Base Rate (per litre)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "sec_incentive",
+   "fieldtype": "Section Break",
+   "label": "Incentive"
+  },
+  {
+   "fieldname": "incentive_above_fat",
+   "fieldtype": "Float",
+   "label": "Incentive Above Fat %"
+  },
+  {
+   "fieldname": "incentive_rate",
+   "fieldtype": "Currency",
+   "label": "Incentive Rate (per litre)"
+  },
+  {
+   "fieldname": "sec_matrix",
+   "fieldtype": "Section Break",
+   "label": "Fat \u00d7 SNF Matrix"
+  },
+  {
+   "fieldname": "fat_snf_matrix",
+   "fieldtype": "Table",
+   "label": "Rate Matrix",
+   "options": "Rate Slab Row"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "delete": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

@@ -8,13 +8,57 @@
  "autoname": "field:breed_name",
  "description": "Breed master with expected productivity benchmarks",
  "fields": [
-  {"fieldname": "breed_name", "fieldtype": "Data", "label": "Breed Name", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "avg_daily_yield_litres", "fieldtype": "Float", "label": "Avg Daily Yield (Litres)", "in_list_view": 1},
-  {"fieldname": "standard_lactation_days", "fieldtype": "Int", "label": "Standard Lactation Days"},
-  {"fieldname": "avg_fat_percentage", "fieldtype": "Float", "label": "Avg Fat Percentage (%)"}
+  {
+   "fieldname": "breed_name",
+   "fieldtype": "Data",
+   "label": "Breed Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "avg_daily_yield_litres",
+   "fieldtype": "Float",
+   "label": "Avg Daily Yield (Litres)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "standard_lactation_days",
+   "fieldtype": "Int",
+   "label": "Standard Lactation Days"
+  },
+  {
+   "fieldname": "avg_fat_percentage",
+   "fieldtype": "Float",
+   "label": "Avg Fat Percentage (%)"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "Milk Collection Supervisor", "read": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Milk Collection Supervisor",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

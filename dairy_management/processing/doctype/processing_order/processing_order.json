@@ -6,20 +6,93 @@
  "is_submittable": 1,
  "autoname": "naming_series:",
  "naming_series_options": "PO-DMS-.YYYY.-.####",
- "description": "Production planning — links to ERPNext BOM and triggers Work Order",
+ "description": "Production planning \u2014 links to ERPNext BOM and triggers Work Order",
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "PO-DMS-.YYYY.-.####"},
-  {"fieldname": "product", "fieldtype": "Link", "label": "Product", "options": "Item", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "planned_quantity", "fieldtype": "Float", "label": "Planned Quantity", "reqd": 1},
-  {"fieldname": "raw_milk_required_litres", "fieldtype": "Float", "label": "Raw Milk Required (Litres)"},
-  {"fieldname": "col_dates", "fieldtype": "Column Break"},
-  {"fieldname": "planned_start_date", "fieldtype": "Date", "label": "Planned Start Date", "reqd": 1},
-  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Draft\nIn Progress\nCompleted\nCancelled", "default": "Draft", "in_list_view": 1},
-  {"fieldname": "sec_erpnext", "fieldtype": "Section Break", "label": "ERPNext References"},
-  {"fieldname": "bom", "fieldtype": "Link", "label": "BOM", "options": "BOM"},
-  {"fieldname": "work_order", "fieldtype": "Link", "label": "Work Order", "options": "Work Order", "read_only": 1}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PO-DMS-.YYYY.-.####"
+  },
+  {
+   "fieldname": "product",
+   "fieldtype": "Link",
+   "label": "Product",
+   "options": "Item",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "planned_quantity",
+   "fieldtype": "Float",
+   "label": "Planned Quantity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "raw_milk_required_litres",
+   "fieldtype": "Float",
+   "label": "Raw Milk Required (Litres)"
+  },
+  {
+   "fieldname": "col_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "planned_start_date",
+   "fieldtype": "Date",
+   "label": "Planned Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nIn Progress\nCompleted\nCancelled",
+   "default": "Draft",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sec_erpnext",
+   "fieldtype": "Section Break",
+   "label": "ERPNext References"
+  },
+  {
+   "fieldname": "bom",
+   "fieldtype": "Link",
+   "label": "BOM",
+   "options": "BOM"
+  },
+  {
+   "fieldname": "work_order",
+   "fieldtype": "Link",
+   "label": "Work Order",
+   "options": "Work Order",
+   "read_only": 1
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "amend": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

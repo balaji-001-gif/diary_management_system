@@ -8,15 +8,69 @@
  "naming_series_options": "PDL-.YYYY.-.####",
  "description": "Plant equipment downtime tracking",
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "PDL-.YYYY.-.####"},
-  {"fieldname": "downtime_date", "fieldtype": "Date", "label": "Date", "reqd": 1, "default": "Today", "in_list_view": 1},
-  {"fieldname": "equipment", "fieldtype": "Data", "label": "Equipment / Machine", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "start_time", "fieldtype": "Time", "label": "Start Time"},
-  {"fieldname": "end_time", "fieldtype": "Time", "label": "End Time"},
-  {"fieldname": "reason", "fieldtype": "Select", "label": "Reason", "options": "Breakdown\nPlanned Maintenance\nPower Failure\nOther"},
-  {"fieldname": "remarks", "fieldtype": "Text", "label": "Remarks"}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PDL-.YYYY.-.####"
+  },
+  {
+   "fieldname": "downtime_date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "equipment",
+   "fieldtype": "Data",
+   "label": "Equipment / Machine",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "label": "Start Time"
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "label": "End Time"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Select",
+   "label": "Reason",
+   "options": "Breakdown\nPlanned Maintenance\nPower Failure\nOther"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Text",
+   "label": "Remarks"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

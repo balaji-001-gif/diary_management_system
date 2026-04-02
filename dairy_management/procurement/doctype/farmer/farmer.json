@@ -8,23 +8,112 @@
  "description": "Farmer master linked to ERPNext Supplier",
  "title_field": "farmer_code",
  "fields": [
-  {"fieldname": "farmer_code", "fieldtype": "Data", "label": "Farmer Code", "reqd": 1, "unique": 1, "in_list_view": 1},
-  {"fieldname": "farmer_name", "fieldtype": "Data", "label": "Farmer Name", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "supplier", "fieldtype": "Link", "label": "ERPNext Supplier", "options": "Supplier"},
-  {"fieldname": "col_loc", "fieldtype": "Column Break"},
-  {"fieldname": "village", "fieldtype": "Data", "label": "Village", "in_list_view": 1},
-  {"fieldname": "route", "fieldtype": "Link", "label": "Milk Route", "options": "Milk Route"},
-  {"fieldname": "sec_bank", "fieldtype": "Section Break", "label": "Bank & Finance"},
-  {"fieldname": "bank_account", "fieldtype": "Link", "label": "Bank Account", "options": "Bank Account"},
-  {"fieldname": "animal_count", "fieldtype": "Int", "label": "No. of Milking Animals"},
-  {"fieldname": "col_coop", "fieldtype": "Column Break"},
-  {"fieldname": "membership_date", "fieldtype": "Date", "label": "Cooperative Membership Date"},
-  {"fieldname": "share_capital", "fieldtype": "Currency", "label": "Share Capital"},
-  {"fieldname": "aadhar_no", "fieldtype": "Data", "label": "Aadhar Number"}
+  {
+   "fieldname": "farmer_code",
+   "fieldtype": "Data",
+   "label": "Farmer Code",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "farmer_name",
+   "fieldtype": "Data",
+   "label": "Farmer Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "ERPNext Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "col_loc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "village",
+   "fieldtype": "Data",
+   "label": "Village",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Link",
+   "label": "Milk Route",
+   "options": "Milk Route"
+  },
+  {
+   "fieldname": "sec_bank",
+   "fieldtype": "Section Break",
+   "label": "Bank & Finance"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Bank Account"
+  },
+  {
+   "fieldname": "animal_count",
+   "fieldtype": "Int",
+   "label": "No. of Milking Animals"
+  },
+  {
+   "fieldname": "col_coop",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "membership_date",
+   "fieldtype": "Date",
+   "label": "Cooperative Membership Date"
+  },
+  {
+   "fieldname": "share_capital",
+   "fieldtype": "Currency",
+   "label": "Share Capital"
+  },
+  {
+   "fieldname": "aadhar_no",
+   "fieldtype": "Data",
+   "label": "Aadhar Number"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "Route Agent", "read": 1},
-  {"role": "Milk Collection Supervisor", "read": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Route Agent",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Milk Collection Supervisor",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

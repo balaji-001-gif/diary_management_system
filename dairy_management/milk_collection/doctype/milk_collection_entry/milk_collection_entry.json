@@ -6,30 +6,152 @@
  "is_submittable": 1,
  "autoname": "naming_series:",
  "naming_series_options": "MCE-.YYYY.MM.DD.-.###",
- "description": "Core transaction — one row per farmer per shift",
+ "description": "Core transaction \u2014 one row per farmer per shift",
  "title_field": "farmer",
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "MCE-.YYYY.MM.DD.-.###"},
-  {"fieldname": "farmer", "fieldtype": "Link", "label": "Farmer", "options": "Farmer", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "route", "fieldtype": "Link", "label": "Route", "options": "Milk Route", "in_list_view": 1},
-  {"fieldname": "col_date", "fieldtype": "Column Break"},
-  {"fieldname": "collection_date", "fieldtype": "Date", "label": "Collection Date", "reqd": 1, "default": "Today", "in_list_view": 1},
-  {"fieldname": "shift", "fieldtype": "Select", "label": "Shift", "options": "Morning\nEvening", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "sec_quantity", "fieldtype": "Section Break", "label": "Quantity & Quality"},
-  {"fieldname": "quantity_litres", "fieldtype": "Float", "label": "Quantity (Litres)", "reqd": 1},
-  {"fieldname": "fat_percentage", "fieldtype": "Float", "label": "Fat %", "reqd": 1},
-  {"fieldname": "snf_percentage", "fieldtype": "Float", "label": "SNF %", "reqd": 1},
-  {"fieldname": "col_quality", "fieldtype": "Column Break"},
-  {"fieldname": "clr", "fieldtype": "Float", "label": "CLR (Corrected Lactometer Reading)"},
-  {"fieldname": "temperature_c", "fieldtype": "Float", "label": "Temperature (°C)"},
-  {"fieldname": "grade", "fieldtype": "Select", "label": "Grade", "options": "Grade A\nGrade B\nGrade C\nRejected", "default": "Grade A"},
-  {"fieldname": "sec_amount", "fieldtype": "Section Break", "label": "Rate & Amount"},
-  {"fieldname": "rate_per_litre", "fieldtype": "Currency", "label": "Rate per Litre", "read_only": 1},
-  {"fieldname": "amount", "fieldtype": "Currency", "label": "Amount", "read_only": 1}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "MCE-.YYYY.MM.DD.-.###"
+  },
+  {
+   "fieldname": "farmer",
+   "fieldtype": "Link",
+   "label": "Farmer",
+   "options": "Farmer",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Link",
+   "label": "Route",
+   "options": "Milk Route",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col_date",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "collection_date",
+   "fieldtype": "Date",
+   "label": "Collection Date",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Select",
+   "label": "Shift",
+   "options": "Morning\nEvening",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sec_quantity",
+   "fieldtype": "Section Break",
+   "label": "Quantity & Quality"
+  },
+  {
+   "fieldname": "quantity_litres",
+   "fieldtype": "Float",
+   "label": "Quantity (Litres)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fat_percentage",
+   "fieldtype": "Float",
+   "label": "Fat %",
+   "reqd": 1
+  },
+  {
+   "fieldname": "snf_percentage",
+   "fieldtype": "Float",
+   "label": "SNF %",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_quality",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "clr",
+   "fieldtype": "Float",
+   "label": "CLR (Corrected Lactometer Reading)"
+  },
+  {
+   "fieldname": "temperature_c",
+   "fieldtype": "Float",
+   "label": "Temperature (\u00b0C)"
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Select",
+   "label": "Grade",
+   "options": "Grade A\nGrade B\nGrade C\nRejected",
+   "default": "Grade A"
+  },
+  {
+   "fieldname": "sec_amount",
+   "fieldtype": "Section Break",
+   "label": "Rate & Amount"
+  },
+  {
+   "fieldname": "rate_per_litre",
+   "fieldtype": "Currency",
+   "label": "Rate per Litre",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "read_only": 1
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "amend": 1},
-  {"role": "Milk Collection Supervisor", "read": 1, "write": 1, "create": 1, "submit": 1},
-  {"role": "Route Agent", "read": 1, "write": 1, "create": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Milk Collection Supervisor",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Route Agent",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

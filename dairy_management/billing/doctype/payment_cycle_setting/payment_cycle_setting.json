@@ -7,11 +7,44 @@
  "is_single": 1,
  "description": "Global settings for farmer payment billing cycles",
  "fields": [
-  {"fieldname": "payment_cycle", "fieldtype": "Select", "label": "Payment Cycle", "options": "Monthly\nFortnightly\nWeekly", "default": "Monthly"},
-  {"fieldname": "default_deduction_types", "fieldtype": "Small Text", "label": "Default Deduction Types"},
-  {"fieldname": "auto_generate_invoices", "fieldtype": "Check", "label": "Auto Generate Farmer Invoices", "default": "1"}
+  {
+   "fieldname": "payment_cycle",
+   "fieldtype": "Select",
+   "label": "Payment Cycle",
+   "options": "Monthly\nFortnightly\nWeekly",
+   "default": "Monthly"
+  },
+  {
+   "fieldname": "default_deduction_types",
+   "fieldtype": "Small Text",
+   "label": "Default Deduction Types"
+  },
+  {
+   "fieldname": "auto_generate_invoices",
+   "fieldtype": "Check",
+   "label": "Auto Generate Farmer Invoices",
+   "default": "1"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

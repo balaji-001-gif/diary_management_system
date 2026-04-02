@@ -8,19 +8,97 @@
  "naming_series_options": "ALN-.YYYY.-.####",
  "description": "Advance loan to farmers with EMI repayment through milk deductions",
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "ALN-.YYYY.-.####"},
-  {"fieldname": "farmer", "fieldtype": "Link", "label": "Farmer", "options": "Farmer", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "loan_date", "fieldtype": "Date", "label": "Loan Date", "reqd": 1, "default": "Today"},
-  {"fieldname": "loan_amount", "fieldtype": "Currency", "label": "Loan Amount", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "purpose", "fieldtype": "Select", "label": "Purpose", "options": "Feed Purchase\nVeterinary\nEquipment\nOther"},
-  {"fieldname": "sec_repay", "fieldtype": "Section Break", "label": "Repayment"},
-  {"fieldname": "repayment_months", "fieldtype": "Int", "label": "Repayment Months", "reqd": 1},
-  {"fieldname": "monthly_deduction", "fieldtype": "Currency", "label": "Monthly EMI", "read_only": 1},
-  {"fieldname": "col_balance", "fieldtype": "Column Break"},
-  {"fieldname": "outstanding_balance", "fieldtype": "Currency", "label": "Outstanding Balance"},
-  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Active\nFully Recovered\nWritten Off", "default": "Active", "in_list_view": 1}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "ALN-.YYYY.-.####"
+  },
+  {
+   "fieldname": "farmer",
+   "fieldtype": "Link",
+   "label": "Farmer",
+   "options": "Farmer",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "loan_date",
+   "fieldtype": "Date",
+   "label": "Loan Date",
+   "reqd": 1,
+   "default": "Today"
+  },
+  {
+   "fieldname": "loan_amount",
+   "fieldtype": "Currency",
+   "label": "Loan Amount",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Select",
+   "label": "Purpose",
+   "options": "Feed Purchase\nVeterinary\nEquipment\nOther"
+  },
+  {
+   "fieldname": "sec_repay",
+   "fieldtype": "Section Break",
+   "label": "Repayment"
+  },
+  {
+   "fieldname": "repayment_months",
+   "fieldtype": "Int",
+   "label": "Repayment Months",
+   "reqd": 1
+  },
+  {
+   "fieldname": "monthly_deduction",
+   "fieldtype": "Currency",
+   "label": "Monthly EMI",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_balance",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "outstanding_balance",
+   "fieldtype": "Currency",
+   "label": "Outstanding Balance"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nFully Recovered\nWritten Off",
+   "default": "Active",
+   "in_list_view": 1
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }

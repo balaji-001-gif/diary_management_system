@@ -8,19 +8,90 @@
  "naming_series_options": "CL-.YYYY.-.####",
  "description": "FSSAI / regulatory inspection records",
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Series", "options": "CL-.YYYY.-.####"},
-  {"fieldname": "audit_date", "fieldtype": "Date", "label": "Audit Date", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "authority", "fieldtype": "Select", "label": "Authority", "options": "FSSAI\nState Food Dept\nInternal Audit", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "inspector_name", "fieldtype": "Data", "label": "Inspector Name"},
-  {"fieldname": "sec_findings", "fieldtype": "Section Break", "label": "Findings & Actions"},
-  {"fieldname": "findings", "fieldtype": "Long Text", "label": "Findings"},
-  {"fieldname": "corrective_actions", "fieldtype": "Long Text", "label": "Corrective Actions"},
-  {"fieldname": "col_close", "fieldtype": "Column Break"},
-  {"fieldname": "closure_date", "fieldtype": "Date", "label": "Closure Date"},
-  {"fieldname": "next_audit_date", "fieldtype": "Date", "label": "Next Audit Date"}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CL-.YYYY.-.####"
+  },
+  {
+   "fieldname": "audit_date",
+   "fieldtype": "Date",
+   "label": "Audit Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "authority",
+   "fieldtype": "Select",
+   "label": "Authority",
+   "options": "FSSAI\nState Food Dept\nInternal Audit",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "inspector_name",
+   "fieldtype": "Data",
+   "label": "Inspector Name"
+  },
+  {
+   "fieldname": "sec_findings",
+   "fieldtype": "Section Break",
+   "label": "Findings & Actions"
+  },
+  {
+   "fieldname": "findings",
+   "fieldtype": "Long Text",
+   "label": "Findings"
+  },
+  {
+   "fieldname": "corrective_actions",
+   "fieldtype": "Long Text",
+   "label": "Corrective Actions"
+  },
+  {
+   "fieldname": "col_close",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "closure_date",
+   "fieldtype": "Date",
+   "label": "Closure Date"
+  },
+  {
+   "fieldname": "next_audit_date",
+   "fieldtype": "Date",
+   "label": "Next Audit Date"
+  }
  ],
  "permissions": [
-  {"role": "Dairy Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1},
-  {"role": "Lab Technician", "read": 1}
+  {
+   "role": "Dairy Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Lab Technician",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "delete": 1
+  }
  ]
 }
