@@ -1,4 +1,4 @@
-# Dairy Management System — Script Report: Dairy P&L Summary
+# Dairy Management System — Script Report: Dairy PL Summary
 
 import frappe
 

@@ -53,7 +53,7 @@ bench --site your-site.local clear-cache
 | Cold Chain Compliance | Inventory | Warehouse, Date Range |
 | Expiry Alert Report | Inventory | Days to Expiry threshold |
 | Farmer Payment Register | Billing | Farmer, Period |
-| Dairy P&L Summary | Billing | Period |
+| Dairy PL Summary | Billing | Period |
 
 ---
 

@@ -664,7 +664,7 @@
   "public": 1,
   "sequence_id": 9.0,
   "title": "Reports",
-  "content": "[{\"id\": \"hdr_9.0\", \"type\": \"header\", \"data\": {\"text\": \"Reports\", \"col\": 12}}, {\"id\": \"c461d21a\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"links\": [{\"type\": \"link\", \"label\": \"Herd Yield Report\", \"link_to\": \"Herd Yield Report\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Animal Health Calendar\", \"link_to\": \"Animal Health Calendar\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Milk Procurement Summary\", \"link_to\": \"Milk Procurement Summary\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Processing Yield Report\", \"link_to\": \"Processing Yield Report\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Cold Chain Compliance\", \"link_to\": \"Cold Chain Compliance\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Expiry Alert Report\", \"link_to\": \"Expiry Alert Report\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Farmer Payment Register\", \"link_to\": \"Farmer Payment Register\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Dairy P&L Summary\", \"link_to\": \"Dairy P&L Summary\", \"link_type\": \"Report\"}]}}]",
+  "content": "[{\"id\": \"hdr_9.0\", \"type\": \"header\", \"data\": {\"text\": \"Reports\", \"col\": 12}}, {\"id\": \"c461d21a\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"links\": [{\"type\": \"link\", \"label\": \"Herd Yield Report\", \"link_to\": \"Herd Yield Report\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Animal Health Calendar\", \"link_to\": \"Animal Health Calendar\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Milk Procurement Summary\", \"link_to\": \"Milk Procurement Summary\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Processing Yield Report\", \"link_to\": \"Processing Yield Report\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Cold Chain Compliance\", \"link_to\": \"Cold Chain Compliance\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Expiry Alert Report\", \"link_to\": \"Expiry Alert Report\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Farmer Payment Register\", \"link_to\": \"Farmer Payment Register\", \"link_type\": \"Report\"}, {\"type\": \"link\", \"label\": \"Dairy PL Summary\", \"link_to\": \"Dairy PL Summary\", \"link_type\": \"Report\"}]}}]",
   "links": [
    {
     "dependencies": "",
@@ -758,9 +758,9 @@
     "dependencies": "",
     "hidden": 0,
     "is_query_report": 0,
-    "label": "Dairy P&L Summary",
+    "label": "Dairy PL Summary",
     "link_count": 0,
-    "link_to": "Dairy P&L Summary",
+    "link_to": "Dairy PL Summary",
     "link_type": "Report",
     "onboard": 0,
     "type": "Link"
