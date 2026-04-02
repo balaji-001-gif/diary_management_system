@@ -106,19 +106,8 @@
   "public": 1,
   "sequence_id": 3.0,
   "title": "Milk Collection",
-  "content": "[{\"id\": \"hdr_3.0\", \"type\": \"header\", \"data\": {\"text\": \"Milk Collection\", \"col\": 12}}, {\"id\": \"bc430189\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Milk Collection Entry\", \"col\": 3}}, {\"id\": \"d10b15e4\", \"type\": \"card\", \"data\": {\"card_name\": \"Milk Collection\", \"links\": [{\"type\": \"link\", \"label\": \"Collection Center\", \"link_to\": \"Collection Center\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Milk Collection Entry\", \"link_to\": \"Milk Collection Entry\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Milk Quality Test\", \"link_to\": \"Milk Quality Test\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Shift Summary\", \"link_to\": \"Shift Summary\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Bulk Milk Cooler Log\", \"link_to\": \"Bulk Milk Cooler Log\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Rejection Record\", \"link_to\": \"Rejection Record\", \"link_type\": \"DocType\"}]}}]",
+  "content": "[{\"id\": \"hdr_3.0\", \"type\": \"header\", \"data\": {\"text\": \"Milk Collection\", \"col\": 12}}, {\"id\": \"d10b15e4\", \"type\": \"card\", \"data\": {\"card_name\": \"Milk Collection\", \"links\": [{\"type\": \"link\", \"label\": \"Collection Center\", \"link_to\": \"Collection Center\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Milk Collection Entry\", \"link_to\": \"Milk Collection Entry\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Milk Quality Test\", \"link_to\": \"Milk Quality Test\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Shift Summary\", \"link_to\": \"Shift Summary\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Bulk Milk Cooler Log\", \"link_to\": \"Bulk Milk Cooler Log\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Rejection Record\", \"link_to\": \"Rejection Record\", \"link_type\": \"DocType\"}]}}]",
   "links": [
-   {
-    "dependencies": "",
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "Milk Collection Entry",
-    "link_count": 0,
-    "link_to": "Milk Collection Entry",
-    "link_type": "DocType",
-    "onboard": 0,
-    "type": "Link"
-   },
    {
     "dependencies": "",
     "hidden": 0,
@@ -197,16 +186,7 @@
     "type": "Link"
    }
   ],
-  "shortcuts": [
-   {
-    "color": "Grey",
-    "format": "",
-    "label": "Milk Collection Entry",
-    "link_to": "Milk Collection Entry",
-    "stats_filter": "",
-    "type": "DocType"
-   }
-  ]
+  "shortcuts": []
  },
  {
   "doctype": "Workspace",
@@ -219,19 +199,8 @@
   "public": 1,
   "sequence_id": 4.0,
   "title": "Procurement",
-  "content": "[{\"id\": \"hdr_4.0\", \"type\": \"header\", \"data\": {\"text\": \"Procurement\", \"col\": 12}}, {\"id\": \"c9d8c501\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Milk Procurement\", \"col\": 3}}, {\"id\": \"701613b8\", \"type\": \"card\", \"data\": {\"card_name\": \"Procurement\", \"links\": [{\"type\": \"link\", \"label\": \"Milk Route\", \"link_to\": \"Milk Route\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Rate Slab\", \"link_to\": \"Rate Slab\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Farmer\", \"link_to\": \"Farmer\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Milk Procurement\", \"link_to\": \"Milk Procurement\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Deduction Master\", \"link_to\": \"Deduction Master\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Procurement Payment\", \"link_to\": \"Procurement Payment\", \"link_type\": \"DocType\"}]}}]",
+  "content": "[{\"id\": \"hdr_4.0\", \"type\": \"header\", \"data\": {\"text\": \"Procurement\", \"col\": 12}}, {\"id\": \"701613b8\", \"type\": \"card\", \"data\": {\"card_name\": \"Procurement\", \"links\": [{\"type\": \"link\", \"label\": \"Milk Route\", \"link_to\": \"Milk Route\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Rate Slab\", \"link_to\": \"Rate Slab\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Farmer\", \"link_to\": \"Farmer\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Milk Procurement\", \"link_to\": \"Milk Procurement\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Deduction Master\", \"link_to\": \"Deduction Master\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Procurement Payment\", \"link_to\": \"Procurement Payment\", \"link_type\": \"DocType\"}]}}]",
   "links": [
-   {
-    "dependencies": "",
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "Milk Procurement",
-    "link_count": 0,
-    "link_to": "Milk Procurement",
-    "link_type": "DocType",
-    "onboard": 0,
-    "type": "Link"
-   },
    {
     "dependencies": "",
     "hidden": 0,
@@ -310,16 +279,7 @@
     "type": "Link"
    }
   ],
-  "shortcuts": [
-   {
-    "color": "Grey",
-    "format": "",
-    "label": "Milk Procurement",
-    "link_to": "Milk Procurement",
-    "stats_filter": "",
-    "type": "DocType"
-   }
-  ]
+  "shortcuts": []
  },
  {
   "doctype": "Workspace",
@@ -332,19 +292,8 @@
   "public": 1,
   "sequence_id": 5.0,
   "title": "Processing",
-  "content": "[{\"id\": \"hdr_5.0\", \"type\": \"header\", \"data\": {\"text\": \"Processing\", \"col\": 12}}, {\"id\": \"6903a06c\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Batch Production\", \"col\": 3}}, {\"id\": \"2597a9ff\", \"type\": \"card\", \"data\": {\"card_name\": \"Processing\", \"links\": [{\"type\": \"link\", \"label\": \"Product Formula\", \"link_to\": \"Product Formula\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Processing Order\", \"link_to\": \"Processing Order\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Pasteurization Log\", \"link_to\": \"Pasteurization Log\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Batch Production\", \"link_to\": \"Batch Production\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Packaging Record\", \"link_to\": \"Packaging Record\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Yield Analysis\", \"link_to\": \"Yield Analysis\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Plant Downtime Log\", \"link_to\": \"Plant Downtime Log\", \"link_type\": \"DocType\"}]}}]",
+  "content": "[{\"id\": \"hdr_5.0\", \"type\": \"header\", \"data\": {\"text\": \"Processing\", \"col\": 12}}, {\"id\": \"2597a9ff\", \"type\": \"card\", \"data\": {\"card_name\": \"Processing\", \"links\": [{\"type\": \"link\", \"label\": \"Product Formula\", \"link_to\": \"Product Formula\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Processing Order\", \"link_to\": \"Processing Order\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Pasteurization Log\", \"link_to\": \"Pasteurization Log\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Batch Production\", \"link_to\": \"Batch Production\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Packaging Record\", \"link_to\": \"Packaging Record\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Yield Analysis\", \"link_to\": \"Yield Analysis\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Plant Downtime Log\", \"link_to\": \"Plant Downtime Log\", \"link_type\": \"DocType\"}]}}]",
   "links": [
-   {
-    "dependencies": "",
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "Batch Production",
-    "link_count": 0,
-    "link_to": "Batch Production",
-    "link_type": "DocType",
-    "onboard": 0,
-    "type": "Link"
-   },
    {
     "dependencies": "",
     "hidden": 0,
@@ -434,16 +383,7 @@
     "type": "Link"
    }
   ],
-  "shortcuts": [
-   {
-    "color": "Grey",
-    "format": "",
-    "label": "Batch Production",
-    "link_to": "Batch Production",
-    "stats_filter": "",
-    "type": "DocType"
-   }
-  ]
+  "shortcuts": []
  },
  {
   "doctype": "Workspace",
@@ -631,19 +571,8 @@
   "public": 1,
   "sequence_id": 8.0,
   "title": "Billing",
-  "content": "[{\"id\": \"hdr_8.0\", \"type\": \"header\", \"data\": {\"text\": \"Billing\", \"col\": 12}}, {\"id\": \"12fcf34a\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Farmer Invoice\", \"col\": 3}}, {\"id\": \"4628ca14\", \"type\": \"card\", \"data\": {\"card_name\": \"Billing\", \"links\": [{\"type\": \"link\", \"label\": \"Farmer Invoice\", \"link_to\": \"Farmer Invoice\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Advance Loan\", \"link_to\": \"Advance Loan\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Deduction Voucher\", \"link_to\": \"Deduction Voucher\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Milk Price Revision\", \"link_to\": \"Milk Price Revision\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Payment Cycle Setting\", \"link_to\": \"Payment Cycle Setting\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Cooperative Member\", \"link_to\": \"Cooperative Member\", \"link_type\": \"DocType\"}]}}]",
+  "content": "[{\"id\": \"hdr_8.0\", \"type\": \"header\", \"data\": {\"text\": \"Billing\", \"col\": 12}}, {\"id\": \"4628ca14\", \"type\": \"card\", \"data\": {\"card_name\": \"Billing\", \"links\": [{\"type\": \"link\", \"label\": \"Farmer Invoice\", \"link_to\": \"Farmer Invoice\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Advance Loan\", \"link_to\": \"Advance Loan\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Deduction Voucher\", \"link_to\": \"Deduction Voucher\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Milk Price Revision\", \"link_to\": \"Milk Price Revision\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Payment Cycle Setting\", \"link_to\": \"Payment Cycle Setting\", \"link_type\": \"DocType\"}, {\"type\": \"link\", \"label\": \"Cooperative Member\", \"link_to\": \"Cooperative Member\", \"link_type\": \"DocType\"}]}}]",
   "links": [
-   {
-    "dependencies": "",
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "Farmer Invoice",
-    "link_count": 0,
-    "link_to": "Farmer Invoice",
-    "link_type": "DocType",
-    "onboard": 0,
-    "type": "Link"
-   },
    {
     "dependencies": "",
     "hidden": 0,
@@ -722,16 +651,7 @@
     "type": "Link"
    }
   ],
-  "shortcuts": [
-   {
-    "color": "Grey",
-    "format": "",
-    "label": "Farmer Invoice",
-    "link_to": "Farmer Invoice",
-    "stats_filter": "",
-    "type": "DocType"
-   }
-  ]
+  "shortcuts": []
  },
  {
   "doctype": "Workspace",
