@@ -259,8 +259,21 @@ def populate_transactions():
 
     for i in [15, 7, 2]: # Three sample production batches
         p_date = add_days(today(), -i)
+        
+        # Create Processing Order first (mandatory for Batch Production)
+        po = frappe.get_doc({
+            "doctype": "Processing Order",
+            "product": "Full Cream Milk",
+            "planned_quantity": 500,
+            "planned_start_date": p_date,
+            "status": "Completed"
+        })
+        po.insert()
+        if i > 5: po.submit()
+
         bp = frappe.get_doc({
             "doctype": "Batch Production",
+            "processing_order": po.name,
             "product": "Full Cream Milk",
             "production_date": p_date,
             "quantity_produced": 500,
