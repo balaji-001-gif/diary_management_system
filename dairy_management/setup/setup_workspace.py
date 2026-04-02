@@ -11,6 +11,15 @@ import frappe
 import json
 
 def execute():
+    # Ensure Module Def exists first
+    if not frappe.db.exists("Module Def", "Dairy Management"):
+        module = frappe.new_doc("Module Def")
+        module.module_name = "Dairy Management"
+        module.app_name = "dairy_management"
+        module.insert(ignore_permissions=True)
+        frappe.db.commit()
+        print("✅ Module Def created")
+
     content = json.dumps([
         {"id": "bc430189", "type": "shortcut", "data": {"shortcut_name": "Milk Collection Entry", "col": 3}},
         {"id": "c9d8c501", "type": "shortcut", "data": {"shortcut_name": "Milk Procurement", "col": 3}},
@@ -83,19 +92,6 @@ def execute():
         ]}}
     ])
 
-    if frappe.db.exists("Workspace", "Dairy Management"):
-        ws = frappe.get_doc("Workspace", "Dairy Management")
-    else:
-        ws = frappe.new_doc("Workspace")
-        ws.name = "Dairy Management"
-
-    ws.label = "Dairy Management"
-    ws.title = "Dairy Management"
-    ws.module = "Dairy Management"
-    ws.public = 1
-    ws.is_hidden = 0
-    ws.sequence_id = 1.0
-    ws.content = content
-    ws.save(ignore_permissions=True)
+    frappe.db.set_value("Workspace", "Dairy Management", "content", content, update_modified=False)
     frappe.db.commit()
-    print("✅ Dairy Management workspace saved successfully.")
+    print("✅ Workspace content updated successfully.")
