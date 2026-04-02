@@ -3,12 +3,33 @@
  "name": "Animal Health Calendar",
  "report_name": "Animal Health Calendar",
  "report_type": "Script Report",
- "ref_doctype": "Health Record",
+ "ref_doctype": "",
  "is_standard": "Yes",
  "module": "Animal Management",
  "filters": [
-  {"fieldname": "animal", "label": "Animal", "fieldtype": "Link", "options": "Animal"},
-  {"fieldname": "from_date", "label": "From Date", "fieldtype": "Date"},
-  {"fieldname": "to_date", "label": "To Date", "fieldtype": "Date"}
+  {
+   "fieldname": "animal",
+   "label": "Animal",
+   "fieldtype": "Link",
+   "options": "Animal"
+  },
+  {
+   "fieldname": "from_date",
+   "label": "From Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "to_date",
+   "label": "To Date",
+   "fieldtype": "Date"
+  }
+ ],
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Dairy Manager"
+  }
  ]
 }
