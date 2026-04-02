@@ -26,6 +26,12 @@ fixtures = [
     ]]]},
     "Custom Field",
     "Property Setter",
+    {
+        "dt": "Workspace",
+        "filters": [
+            ["name", "=", "Dairy Management"]
+        ]
+    }
 ]
 
 # ── Custom Roles ──────────────────────────────────────────────────────────────
