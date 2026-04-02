@@ -197,7 +197,8 @@ def create_entities():
 def populate_transactions():
     print("--- 📊 Seeding Last 30 Days of Transactions...")
     
-    farmers = frappe.get_all("Farmer", pluck="name")
+    # Only seed transactions for Farmers who have a linked Supplier to avoid validation crashes
+    farmers = frappe.get_all("Farmer", filters={"supplier": ["not in", ["", None]]}, pluck="name")
     animals = frappe.get_all("Animal", pluck="name")
     
     for i in range(1, 31):
