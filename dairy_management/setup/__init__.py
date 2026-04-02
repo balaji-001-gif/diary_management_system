@@ -25,17 +25,35 @@ def load_demo_data():
 def create_erpnext_prerequisites():
     print("--- 📦 Seeding ERPNext Prerequisites...")
     
+    # Get primary company
+    company = frappe.db.get_value("Company", {}, "name")
+    if not company:
+        print("⚠️ No Company found. Skipping warehouse creation.")
+        return
+
     # UOM
     if not frappe.db.exists("UOM", "Litre"):
         frappe.get_doc({"doctype": "UOM", "uom_name": "Litre", "must_be_whole_number": 0}).insert(ignore_permissions=True)
         
     # Item Group
+    parent_item_group = frappe.db.get_value("Item Group", {"is_group": 1, "parent_item_group": ""}, "name") or "All Item Groups"
     if not frappe.db.exists("Item Group", "Dairy Products"):
-        frappe.get_doc({"doctype": "Item Group", "item_group_name": "Dairy Products", "parent_item_group": "All Item Groups"}).insert(ignore_permissions=True)
+        frappe.get_doc({"doctype": "Item Group", "item_group_name": "Dairy Products", "parent_item_group": parent_item_group}).insert(ignore_permissions=True)
 
     # Warehouse
-    if not frappe.db.exists("Warehouse", "Finished Goods - DM"):
-        frappe.get_doc({"doctype": "Warehouse", "warehouse_name": "Finished Goods", "is_group": 0, "parent_warehouse": "All Warehouses"}).insert(ignore_permissions=True)
+    parent_warehouse = frappe.db.get_value("Warehouse", {"is_group": 1, "company": company, "parent_warehouse": ["in", ["", None]]}, "name")
+    if not parent_warehouse:
+         # Fallback search
+         parent_warehouse = frappe.db.get_value("Warehouse", {"is_group": 1, "company": company}, "name")
+
+    if not frappe.db.exists("Warehouse", f"Finished Goods - {company}"):
+        frappe.get_doc({
+            "doctype": "Warehouse", 
+            "warehouse_name": "Finished Goods", 
+            "is_group": 0, 
+            "company": company,
+            "parent_warehouse": parent_warehouse
+        }).insert(ignore_permissions=True)
 
     # Items
     items = [
