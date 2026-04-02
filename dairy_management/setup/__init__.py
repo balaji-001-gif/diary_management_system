@@ -46,14 +46,19 @@ def create_erpnext_prerequisites():
          # Fallback search
          parent_warehouse = frappe.db.get_value("Warehouse", {"is_group": 1, "company": company}, "name")
 
-    if not frappe.db.exists("Warehouse", f"Finished Goods - {company}"):
-        frappe.get_doc({
-            "doctype": "Warehouse", 
-            "warehouse_name": "Finished Goods", 
-            "is_group": 0, 
-            "company": company,
-            "parent_warehouse": parent_warehouse
-        }).insert(ignore_permissions=True)
+    company_abbr = frappe.db.get_value("Company", company, "abbr")
+
+    if not frappe.db.exists("Warehouse", f"Finished Goods - {company_abbr}"):
+        try:
+            frappe.get_doc({
+                "doctype": "Warehouse", 
+                "warehouse_name": "Finished Goods", 
+                "is_group": 0, 
+                "company": company,
+                "parent_warehouse": parent_warehouse
+            }).insert(ignore_permissions=True, ignore_if_duplicate=True)
+        except frappe.DuplicateEntryError:
+            pass
 
     # Items
     items = [
