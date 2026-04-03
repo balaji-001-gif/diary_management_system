@@ -46,18 +46,26 @@ def execute():
         ],
         "Processing": [
             {"id": "6903a06c", "type": "shortcut", "data": {"shortcut_name": "Batch Production", "col": 3}},
-            {"id": "2597a9ff", "type": "card", "data": {"card_name": "Processing", "links": [
+            {"id": "c9d8c502", "type": "shortcut", "data": {"shortcut_name": "Processing Order", "col": 3}},
+            {"id": "2597a9ff", "type": "card", "data": {"card_name": "Procurement & Planning", "links": [
                 {"type": "link", "label": "Product Formula", "link_to": "Product Formula", "link_type": "DocType"},
                 {"type": "link", "label": "Processing Order", "link_to": "Processing Order", "link_type": "DocType"},
-                {"type": "link", "label": "Pasteurization Log", "link_to": "Pasteurization Log", "link_type": "DocType"},
                 {"type": "link", "label": "Batch Production", "link_to": "Batch Production", "link_type": "DocType"},
+                {"type": "link", "label": "Yield Analysis", "link_to": "Yield Analysis", "link_type": "DocType"}
+            ]}},
+            {"id": "5297a9fe", "type": "card", "data": {"card_name": "Factory Logs", "links": [
+                {"type": "link", "label": "Pasteurization Log", "link_to": "Pasteurization Log", "link_type": "DocType"},
                 {"type": "link", "label": "Packaging Record", "link_to": "Packaging Record", "link_type": "DocType"},
-                {"type": "link", "label": "Yield Analysis", "link_to": "Yield Analysis", "link_type": "DocType"},
                 {"type": "link", "label": "Plant Downtime Log", "link_to": "Plant Downtime Log", "link_type": "DocType"}
             ]}}
         ],
         "Inventory": [
-            {"id": "b91257ec", "type": "card", "data": {"card_name": "Inventory", "links": [
+            {"id": "b91257ed", "type": "shortcut", "data": {"shortcut_name": "Dispatch Entry", "col": 3}},
+            {"id": "b91257ec", "type": "card", "data": {"card_name": "Distribution", "links": [
+                {"type": "link", "label": "Delivery Route", "link_to": "Delivery Route", "link_type": "DocType"},
+                {"type": "link", "label": "Dispatch Entry", "link_to": "Dispatch Entry", "link_type": "DocType"}
+            ]}},
+            {"id": "b91257ef", "type": "card", "data": {"card_name": "Storage & Logs", "links": [
                 {"type": "link", "label": "Crate Container Master", "link_to": "Crate Container Master", "link_type": "DocType"},
                 {"type": "link", "label": "Temperature Reading", "link_to": "Temperature Reading", "link_type": "DocType"},
                 {"type": "link", "label": "Cold Storage Log", "link_to": "Cold Storage Log", "link_type": "DocType"},
