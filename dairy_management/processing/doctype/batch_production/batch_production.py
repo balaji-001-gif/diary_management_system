@@ -10,6 +10,15 @@ class BatchProduction(Document):
 
     def before_save(self):
         self._calculate_yield()
+        self._set_expiry_date()
+
+    def _set_expiry_date(self):
+        """Automatically set the expiry date from item shelf life if not already set."""
+        if not self.expiry_date and self.product:
+            shelf_life = frappe.db.get_value("Item", self.product, "shelf_life_in_days")
+            if shelf_life:
+                from frappe.utils import add_days
+                self.expiry_date = add_days(self.production_date or frappe.utils.getdate(), shelf_life)
 
     def _calculate_yield(self):
         """Calculate the efficiency/yield percentage of the production run."""

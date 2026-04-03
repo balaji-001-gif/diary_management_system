@@ -1,4 +1,29 @@
 frappe.ui.form.on("Batch Production", {
+    setup: function(frm) {
+        // Only show Processing Orders that are currently In Progress
+        frm.set_query("processing_order", function() {
+            return {
+                filters: [
+                    ["status", "=", "In Progress"],
+                    ["docstatus", "=", 1]
+                ]
+            };
+        });
+    },
+    production_date: function(frm) {
+        // Re-calculate expiry if production date changes
+        frm.trigger("product");
+    },
+    product: function(frm) {
+        if (frm.doc.product) {
+            frappe.db.get_value("Item", frm.doc.product, "shelf_life_in_days", (r) => {
+                if (r && r.shelf_life_in_days) {
+                    let expiry = frappe.datetime.add_days(frm.doc.production_date || frappe.datetime.get_today(), r.shelf_life_in_days);
+                    frm.set_value("expiry_date", expiry);
+                }
+            });
+        }
+    },
     processing_order: function(frm) {
         if (frm.doc.processing_order) {
             frappe.call({
