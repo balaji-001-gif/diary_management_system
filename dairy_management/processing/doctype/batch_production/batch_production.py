@@ -68,16 +68,11 @@ class BatchProduction(Document):
                 frappe.log_error(str(e), "Batch Production: Batch Creation Failed")
 
     def _create_stock_entry(self):
-        """Auto-create ERPNext Stock Entry (Repack) with multiple ingredients."""
+        """Auto-create ERPNext Stock Entry (Repack) with multiple ingredients and fallback."""
         settings = frappe.get_single("Dairy Management Settings")
         
         if not self.target_warehouse:
-            frappe.msgprint("<b>Step 6 Failed:</b> Please select a <b>Target Warehouse</b> for the finished milk.", alert=True, indicator="orange")
-            return
-
-        if not self.calculated_ingredients:
-            frappe.msgprint("<b>Step 6 Failed:</b> No ingredients found. Please ensure the Processing Order is correctly set up.", alert=True, indicator="orange")
-            return
+            frappe.throw("<b>Inventory Error:</b> Please select a <b>Target Warehouse</b> (Finished Goods Shelf) for this batch.")
 
         try:
             se = frappe.new_doc("Stock Entry")
@@ -85,11 +80,11 @@ class BatchProduction(Document):
             se.batch_production = self.name
             se.posting_date = self.production_date
             
-            # 1. CONSUME EVERYTHING in the ingredients table
+            # 1. CONSUME INGREDIENTS
+            has_ingredients = False
             for row in self.calculated_ingredients:
+                has_ingredients = True
                 is_milk = frappe.db.get_value("Item", row.item_code, "item_group") == "Milk" or "Milk" in row.item_code
-                
-                # Source warehouse: Milk from Raw Tank, others from Item Default or a General Store
                 s_warehouse = settings.raw_milk_warehouse if is_milk else frappe.db.get_value("Item", row.item_code, "website_warehouse") or "Stores - BDD"
                 
                 se.append("items", {
@@ -100,7 +95,22 @@ class BatchProduction(Document):
                     "is_finished_item": 0,
                 })
             
-            # 2. PRODUCE the final product
+            # FALLBACK: If table is empty, use the main Milk Item from settings
+            if not has_ingredients:
+                if not settings.raw_milk_warehouse or not settings.raw_milk_item:
+                    frappe.throw("No ingredients found AND 'Dairy Management Settings' is missing default milk item/warehouse.")
+                
+                # Use raw_milk_used_litres (legacy field) or calculate from quantity_produced
+                milk_qty = self.raw_milk_used_litres or self.quantity_produced
+                se.append("items", {
+                    "item_code": settings.raw_milk_item,
+                    "qty": milk_qty,
+                    "s_warehouse": settings.raw_milk_warehouse,
+                    "uom": "Litre",
+                    "is_finished_item": 0,
+                })
+
+            # 2. PRODUCE FINAL PRODUCT
             se.append("items", {
                 "item_code": self.product,
                 "qty": self.quantity_produced,
@@ -109,12 +119,16 @@ class BatchProduction(Document):
                 "batch_no": self.batch_no,
             })
             
-            se.insert(ignore_permissions=True)
+            se.flags.ignore_permissions = True
+            se.insert()
+            se.submit()
+            
             self.db_set("stock_entry", se.name)
-            frappe.msgprint(f"<b>Step 6 Success:</b> Created multi-ingredient Repack {se.name}.", alert=True)
+            frappe.msgprint(f"<b>Stock Received:</b> Repack Entry {se.name} created successfully.", alert=True)
+            
         except Exception as e:
-            frappe.log_error(str(e), "Batch Production: Stock Entry (Repack) Creation Failed")
-            frappe.msgprint("<b>Step 6 Failed:</b> Check Error Log for details.", alert=True, indicator="red")
+            frappe.log_error(frappe.get_traceback(), "Batch Production: Stock Entry Creation Failed")
+            frappe.throw(f"<b>Inventory Failed:</b> {str(e)}. Please check your stock levels or configuration.")
 
 @frappe.whitelist()
 def get_processing_order_details(processing_order):
