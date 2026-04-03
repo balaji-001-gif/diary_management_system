@@ -85,7 +85,9 @@ class BatchProduction(Document):
             for row in self.calculated_ingredients:
                 has_ingredients = True
                 is_milk = frappe.db.get_value("Item", row.item_code, "item_group") == "Milk" or "Milk" in row.item_code
-                s_warehouse = settings.raw_milk_warehouse if is_milk else frappe.db.get_value("Item", row.item_code, "website_warehouse") or "Stores - BDD"
+                
+                # Use default_warehouse from Item or fallback to a general Store
+                s_warehouse = settings.raw_milk_warehouse if is_milk else (frappe.db.get_value("Item", row.item_code, "default_warehouse") or "Stores - BDD")
                 
                 se.append("items", {
                     "item_code": row.item_code,
