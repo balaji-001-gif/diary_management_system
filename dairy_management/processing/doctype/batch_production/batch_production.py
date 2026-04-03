@@ -33,12 +33,25 @@ class BatchProduction(Document):
     def on_submit(self):
         self._ensure_batch_exists()
         self._create_stock_entry()
+        self._create_expiry_tracker()
         self.db_set("status", "Completed")
         
         # Link back to Processing Order and mark it as Completed
         if self.processing_order:
             frappe.db.set_value("Processing Order", self.processing_order, "status", "Completed")
             frappe.msgprint(f"<b>Planning Loop Closed:</b> Processing Order {self.processing_order} is now Completed.", alert=True)
+
+    def _create_expiry_tracker(self):
+        """Automatically log this batch in the Expiry Tracker for monitoring."""
+        if self.expiry_date:
+            et = frappe.new_doc("Expiry Tracker")
+            et.item = self.product
+            et.batch_no = self.batch_no
+            et.warehouse = self.target_warehouse
+            et.expiry_date = self.expiry_date
+            et.quantity_remaining = self.quantity_produced
+            et.insert(ignore_permissions=True)
+            frappe.msgprint(f"<b>Expiry Monitored:</b> Batch {self.batch_no} added to Expiry Tracker.", alert=True)
 
     def _create_quality_inspection(self):
         """Helper to create a Draft Quality Check Inspection linked to this batch."""
