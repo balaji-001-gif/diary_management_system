@@ -3,16 +3,42 @@ from frappe.model.document import Document
 from frappe.utils import flt
 
 class BatchProduction(Document):
+    def after_insert(self):
+        """Auto-create a Draft Lab Test as soon as a new batch record is started."""
+        self.db_set("status", "Pending Lab Test")
+        self._create_quality_inspection()
+
     def before_save(self):
         self._calculate_yield()
 
-    def _calculate_yield(self):
-        if self.quantity_produced and self.raw_milk_used_litres and self.raw_milk_used_litres > 0:
-            self.yield_percentage = flt(self.quantity_produced) / flt(self.raw_milk_used_litres) * 100
+    def before_submit(self):
+        """Block submission if the Lab Test has not passed."""
+        if self.status != "QA Approved":
+            frappe.throw("<b>Stop:</b> Production cannot be finalized until the Lab Test is <b>Submitted & Passed</b>.")
 
     def on_submit(self):
         self._ensure_batch_exists()
         self._create_stock_entry()
+        self.db_set("status", "Completed")
+
+    def _create_quality_inspection(self):
+        """Helper to create a Draft Quality Check Inspection linked to this batch."""
+        if frappe.db.exists("Quality Check Inspection", {"batch_production": self.name}):
+            return
+
+        try:
+            # Try to find a template for this product
+            template = frappe.db.get_value("Lab Test Template", {"product_category": self.product_category})
+            
+            qci = frappe.new_doc("Quality Check Inspection")
+            qci.batch_production = self.name
+            qci.template = template
+            qci.inspection_date = self.production_date
+            qci.insert(ignore_permissions=True)
+            
+            frappe.msgprint(f"<b>Laboratory Step:</b> Draft Lab Test {qci.name} has been queued.", alert=True)
+        except Exception as e:
+            frappe.log_error(str(e), "Batch Production: Lab Test Creation Failed")
 
     def _ensure_batch_exists(self):
         """Automatically create ERPNext Batch if it doesn"t exist for the item."""

@@ -15,6 +15,15 @@
    "options": "BPR-.YYYY.-.####"
   },
   {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nPending Lab Test\nQA Approved\nQA Failed\nCompleted\nCancelled",
+   "default": "Draft",
+   "in_list_view": 1,
+   "allow_on_submit": 1
+  },
+  {
    "fieldname": "processing_order",
    "fieldtype": "Link",
    "label": "Processing Order",

@@ -17,3 +17,16 @@ class QualityCheckInspection(Document):
             self.overall_result = "Fail"
         elif not self.overall_result:
             self.overall_result = "Pass"
+
+    def on_submit(self):
+        """When the lab test is finalized, update the status of the linked batch production."""
+        if not self.batch_production:
+            return
+
+        status = "QA Approved" if self.overall_result == "Pass" else "QA Failed"
+        frappe.db.set_value("Batch Production", self.batch_production, "status", status)
+        
+        # Notify the production team
+        msg = "<b>QA Approved:</b> This batch is now ready for final stock entry." if status == "QA Approved" \
+              else "<b>QA Failed:</b> This batch cannot be finalized due to quality failure."
+        frappe.msgprint(msg, alert=True)

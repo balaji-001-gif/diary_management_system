@@ -16,5 +16,17 @@ frappe.ui.form.on("Batch Production", {
                 }
             });
         }
+    },
+    refresh: function(frm) {
+        if (frm.doc.status === "Pending Lab Test") {
+            frm.set_df_property("status", "description", "<b>Wait:</b> Lab Technician must submit the QC test first.");
+        }
+        
+        // Add indicator colors
+        let color = "orange";
+        if (frm.doc.status === "QA Approved" || frm.doc.status === "Completed") color = "green";
+        if (frm.doc.status === "QA Failed") color = "red";
+        
+        frm.page.set_indicator(frm.doc.status, color);
     }
 });
