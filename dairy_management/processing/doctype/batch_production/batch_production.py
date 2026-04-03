@@ -25,6 +25,11 @@ class BatchProduction(Document):
         self._ensure_batch_exists()
         self._create_stock_entry()
         self.db_set("status", "Completed")
+        
+        # Link back to Processing Order and mark it as Completed
+        if self.processing_order:
+            frappe.db.set_value("Processing Order", self.processing_order, "status", "Completed")
+            frappe.msgprint(f"<b>Planning Loop Closed:</b> Processing Order {self.processing_order} is now Completed.", alert=True)
 
     def _create_quality_inspection(self):
         """Helper to create a Draft Quality Check Inspection linked to this batch."""
