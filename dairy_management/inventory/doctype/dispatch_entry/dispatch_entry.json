@@ -1,0 +1,87 @@
+{
+  "doctype": "DocType",
+  "name": "Dispatch Entry",
+  "module": "Inventory",
+  "is_submittable": 1,
+  "fields": [
+    {
+      "fieldname": "route",
+      "fieldtype": "Link",
+      "options": "Delivery Route",
+      "label": "Delivery Route",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "posting_date",
+      "fieldtype": "Date",
+      "label": "Posting Date",
+      "reqd": 1,
+      "default": "Today",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "driver",
+      "fieldtype": "Link",
+      "options": "Employee",
+      "label": "Driver"
+    },
+    {
+      "fieldname": "vehicle_no",
+      "fieldtype": "Data",
+      "label": "Vehicle No"
+    },
+    {
+      "fieldname": "source_warehouse",
+      "fieldtype": "Link",
+      "options": "Warehouse",
+      "label": "Source Warehouse (Finished Goods)",
+      "reqd": 1
+    },
+    {
+      "fieldname": "items_sec",
+      "fieldtype": "Section Break",
+      "label": "Dispatch Items"
+    },
+    {
+      "fieldname": "items",
+      "fieldtype": "Table",
+      "label": "Dispatch Items",
+      "options": "Dispatch Entry Item",
+      "reqd": 1
+    },
+    {
+      "fieldname": "stock_entry_sec",
+      "fieldtype": "Section Break",
+      "label": "Inventory Confirmation",
+      "hide_border": 1
+    },
+    {
+      "fieldname": "stock_entry",
+      "fieldtype": "Link",
+      "options": "Stock Entry",
+      "label": "Linked Material Issue",
+      "read_only": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "submit": 1,
+      "cancel": 1,
+      "delete": 1
+    },
+    {
+      "role": "Dairy Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "submit": 1,
+      "cancel": 1,
+      "delete": 1
+    }
+  ]
+}

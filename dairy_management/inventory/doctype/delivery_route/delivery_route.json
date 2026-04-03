@@ -1,0 +1,49 @@
+{
+  "doctype": "DocType",
+  "name": "Delivery Route",
+  "module": "Inventory",
+  "autoname": "field:route_name",
+  "fields": [
+    {
+      "fieldname": "route_name",
+      "fieldtype": "Data",
+      "label": "Route Name",
+      "reqd": 1,
+      "unique": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "driver",
+      "fieldtype": "Link",
+      "options": "Employee",
+      "label": "Default Driver",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "vehicle_no",
+      "fieldtype": "Data",
+      "label": "Vehicle No"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text",
+      "label": "Description"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Dairy Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}
