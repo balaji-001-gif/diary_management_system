@@ -1,0 +1,36 @@
+{
+  "doctype": "DocType",
+  "name": "Product Formula Item",
+  "module": "Processing",
+  "istable": 1,
+  "fields": [
+    {
+      "fieldname": "item_code",
+      "fieldtype": "Link",
+      "options": "Item",
+      "label": "Ingredient Item",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "qty_per_unit",
+      "fieldtype": "Float",
+      "label": "Qty per Unit",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "uom",
+      "fieldtype": "Link",
+      "options": "UOM",
+      "label": "UOM",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "is_raw_milk",
+      "fieldtype": "Check",
+      "label": "Is Raw Milk?",
+      "default": 0
+    }
+  ]
+}

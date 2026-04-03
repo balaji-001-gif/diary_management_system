@@ -66,7 +66,19 @@
   {
    "fieldname": "raw_milk_used_litres",
    "fieldtype": "Float",
-   "label": "Raw Milk Used (Litres)"
+   "label": "Raw Milk Used (Legacy)",
+   "hidden": 1
+  },
+  {
+   "fieldname": "ingredients_sec",
+   "fieldtype": "Section Break",
+   "label": "Actual Ingredients Used"
+  },
+  {
+   "fieldname": "calculated_ingredients",
+   "fieldtype": "Table",
+   "label": "Ingredients",
+   "options": "Processing Order Item"
   },
   {
    "fieldname": "col_yield",

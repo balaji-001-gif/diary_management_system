@@ -63,15 +63,15 @@ class BatchProduction(Document):
                 frappe.log_error(str(e), "Batch Production: Batch Creation Failed")
 
     def _create_stock_entry(self):
-        """Auto-create ERPNext Stock Entry (Repack) for the simplified dairy flow."""
+        """Auto-create ERPNext Stock Entry (Repack) with multiple ingredients."""
         settings = frappe.get_single("Dairy Management Settings")
         
         if not self.target_warehouse:
             frappe.msgprint("<b>Step 6 Failed:</b> Please select a <b>Target Warehouse</b> for the finished milk.", alert=True, indicator="orange")
             return
 
-        if not settings.raw_milk_warehouse:
-            frappe.msgprint("<b>Step 6 Failed:</b> Please configure 'Default Raw Milk Warehouse' in <b>Dairy Management Settings</b>.", alert=True, indicator="orange")
+        if not self.calculated_ingredients:
+            frappe.msgprint("<b>Step 6 Failed:</b> No ingredients found. Please ensure the Processing Order is correctly set up.", alert=True, indicator="orange")
             return
 
         try:
@@ -80,16 +80,22 @@ class BatchProduction(Document):
             se.batch_production = self.name
             se.posting_date = self.production_date
             
-            # Row 1: SOURCE - Consume Raw Milk
-            se.append("items", {
-                "item_code": settings.raw_milk_item or "Raw Milk",
-                "qty": self.raw_milk_used_litres,
-                "s_warehouse": settings.raw_milk_warehouse,
-                "uom": "Litre",
-                "is_finished_item": 0,
-            })
+            # 1. CONSUME EVERYTHING in the ingredients table
+            for row in self.calculated_ingredients:
+                is_milk = frappe.db.get_value("Item", row.item_code, "item_group") == "Milk" or "Milk" in row.item_code
+                
+                # Source warehouse: Milk from Raw Tank, others from Item Default or a General Store
+                s_warehouse = settings.raw_milk_warehouse if is_milk else frappe.db.get_value("Item", row.item_code, "website_warehouse") or "Stores - BDD"
+                
+                se.append("items", {
+                    "item_code": row.item_code,
+                    "qty": row.required_qty,
+                    "s_warehouse": s_warehouse,
+                    "uom": row.uom,
+                    "is_finished_item": 0,
+                })
             
-            # Row 2: TARGET - Produce Finished Product
+            # 2. PRODUCE the final product
             se.append("items", {
                 "item_code": self.product,
                 "qty": self.quantity_produced,
@@ -100,30 +106,28 @@ class BatchProduction(Document):
             
             se.insert(ignore_permissions=True)
             self.db_set("stock_entry", se.name)
-            frappe.msgprint(f"<b>Step 6 Success:</b> Created Repack Stock Entry {se.name}.", alert=True)
+            frappe.msgprint(f"<b>Step 6 Success:</b> Created multi-ingredient Repack {se.name}.", alert=True)
         except Exception as e:
             frappe.log_error(str(e), "Batch Production: Stock Entry (Repack) Creation Failed")
             frappe.msgprint("<b>Step 6 Failed:</b> Check Error Log for details.", alert=True, indicator="red")
 
 @frappe.whitelist()
 def get_processing_order_details(processing_order):
-    """Utility to auto-fill Batch Production fields from the linked Work Order."""
+    """Utility to auto-fill Batch Production fields and ingredients from Processing Order."""
     po = frappe.get_doc("Processing Order", processing_order)
     
-    # Defaults from Processing Order
     data = {
         "product": po.product,
         "quantity_produced": po.planned_quantity,
-        "raw_milk_used_litres": po.raw_milk_required_litres,
-        "target_warehouse": frappe.db.get_single_value("Dairy Management Settings", "finished_goods_warehouse")
+        "target_warehouse": frappe.db.get_single_value("Dairy Management Settings", "finished_goods_warehouse"),
+        "ingredients": []
     }
     
-    # If a Work Order exists, it is the source of truth for production
-    if po.work_order:
-        wo = frappe.get_doc("Work Order", po.work_order)
-        data.update({
-            "quantity_produced": wo.qty,
-            "product": wo.production_item
+    for row in po.calculated_ingredients:
+        data["ingredients"].append({
+            "item_code": row.item_code,
+            "required_qty": row.required_qty,
+            "uom": row.uom
         })
         
     return data

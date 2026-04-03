@@ -25,7 +25,19 @@
   {
    "fieldname": "raw_milk_litres_per_unit",
    "fieldtype": "Float",
-   "label": "Raw Milk Litres per Unit"
+   "label": "Raw Milk Litres per Unit (Legacy)",
+   "hidden": 1
+  },
+  {
+   "fieldname": "ingredients_sec",
+   "fieldtype": "Section Break",
+   "label": "Ingredients"
+  },
+  {
+   "fieldname": "ingredients",
+   "fieldtype": "Table",
+   "label": "Ingredients",
+   "options": "Product Formula Item"
   },
   {
    "fieldname": "cream_ratio",

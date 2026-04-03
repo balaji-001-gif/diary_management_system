@@ -1,0 +1,30 @@
+{
+  "doctype": "DocType",
+  "name": "Processing Order Item",
+  "module": "Processing",
+  "istable": 1,
+  "fields": [
+    {
+      "fieldname": "item_code",
+      "fieldtype": "Link",
+      "options": "Item",
+      "label": "Ingredient Item",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "required_qty",
+      "fieldtype": "Float",
+      "label": "Required Quantity",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "uom",
+      "fieldtype": "Link",
+      "options": "UOM",
+      "label": "UOM",
+      "in_list_view": 1
+    }
+  ]
+}

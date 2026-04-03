@@ -1,26 +1,40 @@
 frappe.ui.form.on("Processing Order", {
     product_formula: function(frm) {
         if (frm.doc.product_formula) {
-            frappe.db.get_value("Product Formula", frm.doc.product_formula, ["product", "raw_milk_litres_per_unit"], (r) => {
-                if (r && r.product) {
-                    frm.set_value("product", r.product);
-                    calculate_raw_milk(frm, r.raw_milk_litres_per_unit);
-                }
+            frappe.model.with_doc("Product Formula", frm.doc.product_formula, function() {
+                let formula = frappe.get_doc("Product Formula", frm.doc.product_formula);
+                frm.set_value("product", formula.product);
+                calculate_ingredients(frm, formula);
             });
         }
     },
     planned_quantity: function(frm) {
         if (frm.doc.product_formula) {
-            frappe.db.get_value("Product Formula", frm.doc.product_formula, "raw_milk_litres_per_unit", (r) => {
-                calculate_raw_milk(frm, r.raw_milk_litres_per_unit);
+            frappe.model.with_doc("Product Formula", frm.doc.product_formula, function() {
+                let formula = frappe.get_doc("Product Formula", frm.doc.product_formula);
+                calculate_ingredients(frm, formula);
             });
         }
     }
 });
 
-var calculate_raw_milk = function(frm, ratio) {
-    if (frm.doc.planned_quantity && ratio) {
-        let total = flt(frm.doc.planned_quantity) * flt(ratio);
-        frm.set_value("raw_milk_required_litres", total);
+var calculate_ingredients = function(frm, formula) {
+    frm.clear_table("calculated_ingredients");
+    
+    if (frm.doc.planned_quantity && formula.ingredients) {
+        formula.ingredients.forEach(row => {
+            let child = frm.add_child("calculated_ingredients");
+            child.item_code = row.item_code;
+            child.uom = row.uom;
+            child.required_qty = flt(frm.doc.planned_quantity) * flt(row.qty_per_unit);
+        });
+        
+        // Backward compatibility for the legacy field (hidden)
+        let milk_row = formula.ingredients.find(i => i.is_raw_milk);
+        if (milk_row) {
+            frm.set_value("raw_milk_required_litres", flt(frm.doc.planned_quantity) * flt(milk_row.qty_per_unit));
+        }
     }
+    
+    frm.refresh_field("calculated_ingredients");
 };
