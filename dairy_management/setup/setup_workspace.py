@@ -148,4 +148,5 @@ def execute():
         seq_id += 1.0
 
     frappe.db.commit()
-    print("✅ Split Modular Workspaces updated successfully.")
+    frappe.clear_cache()
+    print("✅ Split Modular Workspaces updated and Cache cleared successfully.")
