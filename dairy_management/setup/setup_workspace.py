@@ -61,15 +61,13 @@ def execute():
         ],
         "Inventory": [
             {"id": "b91257ed", "type": "shortcut", "data": {"shortcut_name": "Dispatch Entry", "col": 3}},
-            {"id": "b91257ec", "type": "card", "data": {"card_name": "Distribution", "links": [
-                {"type": "link", "label": "Delivery Route", "link_to": "Delivery Route", "link_type": "DocType"},
-                {"type": "link", "label": "Dispatch Entry", "link_to": "Dispatch Entry", "link_type": "DocType"}
-            ]}},
-            {"id": "b91257ef", "type": "card", "data": {"card_name": "Storage & Logs", "links": [
+            {"id": "b91257ec", "type": "card", "data": {"card_name": "Inventory", "links": [
                 {"type": "link", "label": "Crate Container Master", "link_to": "Crate Container Master", "link_type": "DocType"},
                 {"type": "link", "label": "Temperature Reading", "link_to": "Temperature Reading", "link_type": "DocType"},
                 {"type": "link", "label": "Cold Storage Log", "link_to": "Cold Storage Log", "link_type": "DocType"},
-                {"type": "link", "label": "Expiry Tracker", "link_to": "Expiry Tracker", "link_type": "DocType"}
+                {"type": "link", "label": "Expiry Tracker", "link_to": "Expiry Tracker", "link_type": "DocType"},
+                {"type": "link", "label": "Delivery Route", "link_to": "Delivery Route", "link_type": "DocType"},
+                {"type": "link", "label": "Dispatch Entry", "link_to": "Dispatch Entry", "link_type": "DocType"}
             ]}}
         ],
         "Quality Control": [
