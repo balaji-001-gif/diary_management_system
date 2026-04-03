@@ -11,6 +11,11 @@ class BatchProduction(Document):
     def before_save(self):
         self._calculate_yield()
 
+    def _calculate_yield(self):
+        """Calculate the efficiency/yield percentage of the production run."""
+        if self.quantity_produced and self.raw_milk_used_litres and self.raw_milk_used_litres > 0:
+            self.yield_percentage = (flt(self.quantity_produced) / flt(self.raw_milk_used_litres)) * 100
+
     def before_submit(self):
         """Block submission if the Lab Test has not passed."""
         if self.status != "QA Approved":
@@ -27,8 +32,9 @@ class BatchProduction(Document):
             return
 
         try:
-            # Try to find a template for this product
-            template = frappe.db.get_value("Lab Test Template", {"product_category": self.product_category})
+            # Get the Item Group of the product to find the matching QC template
+            item_group = frappe.db.get_value("Item", self.product, "item_group")
+            template = frappe.db.get_value("Lab Test Template", {"product_category": item_group})
             
             qci = frappe.new_doc("Quality Check Inspection")
             qci.batch_production = self.name
