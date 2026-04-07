@@ -3,7 +3,15 @@
   "name": "Dispatch Entry",
   "module": "Inventory",
   "is_submittable": 1,
+  "autoname": "naming_series:",
   "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "DISP-.YYYY.MM.-.####",
+      "reqd": 1
+    },
     {
       "fieldname": "route",
       "fieldtype": "Link",
