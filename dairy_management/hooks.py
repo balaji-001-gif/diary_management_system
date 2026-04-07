@@ -61,7 +61,7 @@ scheduler_events = {
 
 # ── Dashboard Configuration ──────────────────────────────────────────────────
 override_doctype_dashboards = {
-    "Sales Invoice": "dairy_management.inventory.doctype.dispatch_entry.dispatch_entry_dashboard"
+    "Sales Invoice": "dairy_management.inventory.doctype.dispatch_entry.dispatch_entry_dashboard.get_data"
 }
 
 # ── Document Events ───────────────────────────────────────────────────────────
