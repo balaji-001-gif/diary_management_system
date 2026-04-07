@@ -98,6 +98,7 @@ def execute():
                 {"type": "link", "label": "Animal Health Calendar", "link_to": "Animal Health Calendar", "link_type": "Report"},
                 {"type": "link", "label": "Milk Procurement Summary", "link_to": "Milk Procurement Summary", "link_type": "Report"},
                 {"type": "link", "label": "Processing Yield Report", "link_to": "Processing Yield Report", "link_type": "Report"},
+                {"type": "link", "label": "Dispatch Summary", "link_to": "Dispatch Summary", "link_type": "Report"},
                 {"type": "link", "label": "Cold Chain Compliance", "link_to": "Cold Chain Compliance", "link_type": "Report"},
                 {"type": "link", "label": "Expiry Alert Report", "link_to": "Expiry Alert Report", "link_type": "Report"},
                 {"type": "link", "label": "Farmer Payment Register", "link_to": "Farmer Payment Register", "link_type": "Report"},

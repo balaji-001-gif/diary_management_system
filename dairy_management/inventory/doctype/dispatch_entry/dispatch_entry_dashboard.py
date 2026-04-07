@@ -5,8 +5,8 @@ def get_data():
         "fieldname": "dispatch_entry",
         "transactions": [
             {
-                "label": _("Inventory Transfer"),
-                "items": ["Stock Entry"]
+                "label": _("Inventory and Billing"),
+                "items": ["Stock Entry", "Sales Invoice"]
             }
         ]
     }

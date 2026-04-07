@@ -21,6 +21,28 @@
       "in_list_view": 1
     },
     {
+      "fieldname": "customer_sec",
+      "fieldtype": "Section Break",
+      "label": "Billing Information (Optional)"
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "options": "Customer",
+      "label": "Wholesale Customer (e.g. Distributor)"
+    },
+    {
+      "fieldname": "sales_invoice",
+      "fieldtype": "Link",
+      "options": "Sales Invoice",
+      "label": "Linked Sales Invoice",
+      "read_only": 1
+    },
+    {
+      "fieldname": "driver_sec",
+      "fieldtype": "Section Break"
+    },
+    {
       "fieldname": "driver",
       "fieldtype": "Link",
       "options": "Employee",
