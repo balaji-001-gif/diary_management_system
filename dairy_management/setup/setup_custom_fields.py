@@ -21,6 +21,16 @@ def execute():
                 "insert_after": "dispatch_entry",
                 "read_only": 1
             }
+        ],
+        "Sales Invoice": [
+            {
+                "fieldname": "dispatch_entry",
+                "label": "Dispatch Entry",
+                "fieldtype": "Link",
+                "options": "Dispatch Entry",
+                "insert_after": "customer",
+                "read_only": 1
+            }
         ]
     }
     

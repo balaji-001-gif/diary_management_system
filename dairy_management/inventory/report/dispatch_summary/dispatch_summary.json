@@ -10,5 +10,6 @@
  "module": "Inventory",
  "name": "Dispatch Summary",
  "report_name": "Dispatch Summary",
+ "ref_doctype": "Dispatch Entry",
  "report_type": "Script Report"
 }
