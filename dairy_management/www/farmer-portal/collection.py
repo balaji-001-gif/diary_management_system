@@ -20,8 +20,8 @@ def get_context(context):
     
     # 2. Fetch filters from the URL (if any)
     filters = frappe.form_dict
-    from_date = filters.get("from_date")
-    to_date = filters.get("to_date")
+    from_date = filters.get("from_date") or frappe.utils.add_months(frappe.utils.today(), -1)
+    to_date = filters.get("to_date") or frappe.utils.today()
     
     # 3. Build query conditions
     conditions = {"farmer": farmer.name, "docstatus": 1}

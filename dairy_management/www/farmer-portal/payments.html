@@ -5,7 +5,7 @@
     
     <!-- 🌿 Header Section -->
     <div class="portal-header" style="margin-bottom: 2.5rem;">
-        <h1 style="font-weight: 700; font-size: 2rem; background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        <h1 style="font-weight: 700; font-size: 2rem; background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
             Payment & Deduction History
         </h1>
         <p style="color: #94a3b8; margin-top: 0.5rem;">Total financial transparency for <strong>{{ farmer_name or 'Farmer' }}</strong>.</p>
@@ -79,9 +79,11 @@
                         <td style="padding: 1rem; border: none; font-weight: 600;">{{ i.name }}</td>
                         <td style="padding: 1rem; border: none;">{{ i.posting_date }}</td>
                         <td style="padding: 1rem; border: none;">
-                            <span style="font-size: 0.85rem; padding: 0.3rem 0.6rem; background: rgba(59, 130, 246, 0.1); color: #3b82f6; border-radius: 8px;">
-                                {{ i.status }}
-                            </span>
+                            {% if i.status == "Paid" %}
+                            <span style="font-size: 0.8rem; padding: 0.4rem 0.8rem; background: rgba(16, 185, 129, 0.1); color: #10b981; border-radius: 20px; font-weight: 700;">Paid</span>
+                            {% else %}
+                            <span style="font-size: 0.8rem; padding: 0.4rem 0.8rem; background: rgba(59, 130, 246, 0.1); color: #3b82f6; border-radius: 20px; font-weight: 700;">{{ i.status }}</span>
+                            {% endif %}
                         </td>
                         <td style="padding: 1rem; border: none; text-align: right; color: #10b981; font-weight: 700;">
                             {{ frappe.format(i.grand_total, "Currency") }}

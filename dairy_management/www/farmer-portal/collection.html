@@ -13,6 +13,12 @@
 
     <!-- 🔍 Filter Section -->
     <div class="filter-card" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;">
+        <div class="quick-filters" style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+            <a href="?from_date={{ frappe.utils.add_days(frappe.utils.today(), -7) }}" class="q-btn" style="text-decoration: none; padding: 0.5rem 1rem; background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; color: #3b82f6; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Last 7 Days</a>
+            <a href="?from_date={{ frappe.utils.add_months(frappe.utils.today(), -1) }}" class="q-btn" style="text-decoration: none; padding: 0.5rem 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Monthly View</a>
+            <a href="?from_date={{ frappe.utils.get_year_start(frappe.utils.today()) }}" class="q-btn" style="text-decoration: none; padding: 0.5rem 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">This Year</a>
+        </div>
+        
         <form method="GET" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end;">
             <div style="flex: 1; min-width: 200px;">
                 <label style="display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">From Date</label>
