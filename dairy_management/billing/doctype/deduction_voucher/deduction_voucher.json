@@ -67,6 +67,11 @@
       "submit": 1,
       "cancel": 1,
       "delete": 1
-    }
+    },
+   {
+    "role": "Farmer",
+    "read": 1,
+    "if_owner": 0
+   }
   ]
 }

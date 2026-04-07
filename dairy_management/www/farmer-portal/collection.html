@@ -1,0 +1,82 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="farmer-portal-container" style="padding: 2rem; background: #0f172a; min-height: 100vh; color: #f8fafc; font-family: 'Inter', sans-serif;">
+    
+    <!-- 🌿 Header Section -->
+    <div class="portal-header" style="margin-bottom: 2.5rem;">
+        <h1 style="font-weight: 700; font-size: 2rem; background: linear-gradient(90deg, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            My Milk Collection
+        </h1>
+        <p style="color: #94a3b8; margin-top: 0.5rem;">Welcome back, <strong>{{ farmer_name or 'Farmer' }}</strong>. Here are your recent milk slips.</p>
+    </div>
+
+    <!-- 🔍 Filter Section -->
+    <div class="filter-card" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;">
+        <form method="GET" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end;">
+            <div style="flex: 1; min-width: 200px;">
+                <label style="display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">From Date</label>
+                <input type="date" name="from_date" class="form-control" style="background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px;">
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+                <label style="display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">To Date</label>
+                <input type="date" name="to_date" class="form-control" style="background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px;">
+            </div>
+            <button type="submit" class="btn btn-primary" style="background: #3b82f6; border: none; padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 600;">
+                Refresh Slips
+            </button>
+        </form>
+    </div>
+
+    <!-- 📊 Data Table -->
+    {% if entries %}
+    <div class="table-responsive" style="background: rgba(30, 41, 59, 0.5); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden;">
+        <table class="table" style="margin-bottom: 0; color: #cbd5e1;">
+            <thead style="background: rgba(15, 23, 42, 0.8); border-bottom: 1px solid #334155;">
+                <tr>
+                    <th style="padding: 1.2rem; font-weight: 600; border: none;">Date & Shift</th>
+                    <th style="padding: 1.2rem; font-weight: 600; border: none;">Qty (L)</th>
+                    <th style="padding: 1.2rem; font-weight: 600; border: none;">Quality (Fat/SNF)</th>
+                    <th style="padding: 1.2rem; font-weight: 600; border: none; text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: background 0.2s;" onmouseover="this.style.background='rgba(59, 130, 246, 0.05)'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 1.2rem; border: none;">
+                        <span style="display: block; font-weight: 600; color: #f8fafc;">{{ entry.collection_date }}</span>
+                        <span style="font-size: 0.8rem; color: #94a3b8;">{{ entry.shift }} Shift</span>
+                    </td>
+                    <td style="padding: 1.2rem; border: none;">
+                        <span style="padding: 0.4rem 0.8rem; background: rgba(16, 185, 129, 0.1); color: #10b981; border-radius: 20px; font-size: 0.9rem;">
+                            {{ entry.quantity_litres }} L
+                        </span>
+                    </td>
+                    <td style="padding: 1.2rem; border: none;">
+                        <span style="display: block;">Fat: <strong>{{ entry.fat_percentage }}%</strong></span>
+                        <span style="display: block; font-size: 0.85rem; color: #94a3b8;">SNF: {{ entry.snf_percentage }}%</span>
+                    </td>
+                    <td style="padding: 1.2rem; border: none; text-align: right; font-weight: 700; color: #3b82f6;">
+                        {{ frappe.format(entry.amount, "Currency") }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div style="text-align: center; padding: 4rem; background: rgba(30, 41, 59, 0.5); border-radius: 16px; border: 1px dashed #334155;">
+        <img src="https://cdni.iconscout.com/illustration/premium/thumb/empty-box-4335555-3580555.png" style="width: 120px; opacity: 0.3; margin-bottom: 1.5rem;">
+        <h3 style="color: #94a3b8;">No milk slips found for this period.</h3>
+    </div>
+    {% endif %}
+
+</div>
+
+<style>
+    .form-control:focus {
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+    }
+</style>
+{% endblock %}

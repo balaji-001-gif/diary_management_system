@@ -15,6 +15,12 @@ required_apps = ["frappe", "erpnext"]
 app_include_js = "/assets/dairy_management/js/dairy_management.min.js"
 app_include_css = "/assets/dairy_management/css/dairy_management.min.css"
 
+# ── Portal Configuration ──────────────────────────────────────────────────────
+portal_menu_items = [
+    {"title": "My Milk Collection", "route": "/farmer-portal/collection", "role": "Farmer"},
+    {"title": "My Payment History", "route": "/farmer-portal/payments", "role": "Farmer"}
+]
+
 # ── Fixtures ──────────────────────────────────────────────────────────────────
 fixtures = [
     {"dt": "Role", "filters": [["role_name", "in", [
