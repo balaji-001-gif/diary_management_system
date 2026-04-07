@@ -31,6 +31,16 @@ def execute():
                 "insert_after": "customer",
                 "read_only": 1
             }
+        ],
+        "Purchase Invoice": [
+            {
+                "fieldname": "custom_farmer_invoice",
+                "label": "Farmer Invoice",
+                "fieldtype": "Link",
+                "options": "Farmer Invoice",
+                "insert_after": "supplier",
+                "read_only": 1
+            }
         ]
     }
     

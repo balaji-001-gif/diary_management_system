@@ -61,7 +61,7 @@
    "fieldname": "deductions",
    "fieldtype": "Table",
    "label": "Deductions",
-   "options": "Deduction Voucher"
+   "options": "Farmer Invoice Deduction"
   },
   {
    "fieldname": "total_deductions",

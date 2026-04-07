@@ -1,8 +1,46 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import flt
+from frappe import _
 
 class FarmerInvoice(Document):
+    @frappe.whitelist()
+    def get_billing_data(self):
+        """Fetch and aggregate milk collection and deduction data for the period."""
+        if not (self.period_from and self.period_to):
+            frappe.throw(_("Please select both 'Period From' and 'Period To'"))
+
+        # 1. Fetch Milk Collection Data
+        collection_data = frappe.db.get_value(
+            "Milk Collection Entry",
+            {"farmer": self.farmer, "collection_date": ["between", [self.period_from, self.period_to]], "docstatus": 1},
+            ["sum(quantity_litres)", "sum(amount)"],
+            as_dict=1
+        )
+
+        self.total_litres_supplied = collection_data.get("sum(quantity_litres)") or 0
+        self.gross_amount = collection_data.get("sum(amount)") or 0
+
+        # 2. Fetch Deduction Vouchers
+        self.set("deductions", [])
+        deduction_records = frappe.get_all(
+            "Deduction Voucher",
+            filters={"farmer": self.farmer, "posting_date": ["between", [self.period_from, self.period_to]], "docstatus": 1},
+            fields=["name", "amount", "deduction_type"]
+        )
+
+        total_deductions = 0
+        for d in deduction_records:
+            self.append("deductions", {
+                "deduction_voucher": d.name,
+                "amount": d.amount,
+                "deduction_type": d.deduction_type
+            })
+            total_deductions += d.amount
+
+        self.total_deductions = total_deductions
+        self.net_payable = self.gross_amount - self.total_deductions
+
     def before_save(self):
         self._calculate_amounts()
 

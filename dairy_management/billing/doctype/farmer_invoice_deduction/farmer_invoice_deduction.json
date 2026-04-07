@@ -1,0 +1,30 @@
+{
+  "doctype": "DocType",
+  "name": "Farmer Invoice Deduction",
+  "module": "Billing",
+  "istable": 1,
+  "fields": [
+    {
+      "fieldname": "deduction_voucher",
+      "fieldtype": "Link",
+      "label": "Deduction Voucher",
+      "options": "Deduction Voucher",
+      "in_list_view": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "deduction_type",
+      "fieldtype": "Data",
+      "label": "Type",
+      "in_list_view": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "amount",
+      "fieldtype": "Currency",
+      "label": "Amount",
+      "in_list_view": 1,
+      "read_only": 1
+    }
+  ]
+}
