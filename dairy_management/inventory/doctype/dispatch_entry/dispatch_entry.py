@@ -41,9 +41,11 @@ class DispatchEntry(Document):
             si.posting_date = self.posting_date
             si.dispatch_entry = self.name
             
-            # Use default accounts for the customer/company
-            si.debit_to = frappe.db.get_value("Customer", self.customer, "reconciliation_account") or \
-                         frappe.db.get_value("Company", company, "default_receivable_account")
+            # Use default receivable account from the company for maximum reliability
+            si.debit_to = frappe.get_cached_value("Company", company, "default_receivable_account")
+            
+            if not si.debit_to:
+                frappe.throw("<b>Billing Error:</b> Please set a 'Default Receivable Account' in your Company settings.")
             
             for row in self.items:
                 si.append("items", {
