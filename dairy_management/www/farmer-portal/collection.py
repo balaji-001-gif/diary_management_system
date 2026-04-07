@@ -5,8 +5,12 @@ def get_context(context):
     """Fetch milk collection entries for the logged-in farmer."""
     user = frappe.session.user
     
-    # 1. Identify the Farmer record linked to this user's email
-    farmer = frappe.db.get_value("Farmer", {"email_id": user}, ["name", "farmer_name"], as_dict=1)
+    # 1. Identify the Farmer record where the Name (Farmer Code) matches the logged-in Username
+    farmer = frappe.db.get_value("Farmer", {"name": user}, ["name", "farmer_name"], as_dict=1)
+    
+    # Fallback: Check email_id just in case
+    if not farmer:
+        farmer = frappe.db.get_value("Farmer", {"email_id": user}, ["name", "farmer_name"], as_dict=1)
     
     if not farmer:
         context.no_farmer_found = True

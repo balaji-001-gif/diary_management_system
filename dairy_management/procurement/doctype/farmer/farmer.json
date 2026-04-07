@@ -26,8 +26,14 @@
   {
    "fieldname": "email_id",
    "fieldtype": "Data",
-   "label": "Email ID (For Portal Login)",
+   "label": "Email ID (Optional)",
    "unique": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Phone",
+   "label": "Mobile Number",
    "in_list_view": 1
   },
   {

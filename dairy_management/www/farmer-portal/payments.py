@@ -3,7 +3,11 @@ import frappe
 def get_context(context):
     """Fetch payment and deduction history for the logged-in farmer."""
     user = frappe.session.user
-    farmer = frappe.db.get_value("Farmer", {"email_id": user}, ["name", "farmer_name", "supplier"], as_dict=1)
+    
+    # 1. Identify by Name (Farmer Code/Username) or fallback to Email
+    farmer = frappe.db.get_value("Farmer", {"name": user}, ["name", "farmer_name", "supplier"], as_dict=1)
+    if not farmer:
+        farmer = frappe.db.get_value("Farmer", {"email_id": user}, ["name", "farmer_name", "supplier"], as_dict=1)
     
     if not farmer:
         context.no_farmer_found = True
