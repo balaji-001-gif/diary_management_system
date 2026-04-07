@@ -3,7 +3,7 @@ import frappe
 def execute(filters=None):
     columns = get_columns()
     data = get_data(filters)
-    return columns, data
+    return columns, data, None, None, None, "Dispatch Entry"
 
 def get_columns():
     return [
