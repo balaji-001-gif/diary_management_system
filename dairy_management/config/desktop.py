@@ -46,11 +46,11 @@ def get_data():
             "label": _("Quality Control"),
         },
         {
-            "module_name": "Billing",
+            "module_name": "Dairy Billing",
             "color": "#558b2f",
             "icon": "octicon octicon-credit-card",
             "type": "module",
-            "label": _("Billing"),
+            "label": _("Dairy Billing"),
         },
         {
             "module_name": "Reports",

@@ -1,7 +1,7 @@
 {
  "doctype": "DocType",
  "name": "Farmer Invoice",
- "module": "Billing",
+ "module": "Dairy Billing",
  "custom": 0,
  "is_submittable": 1,
  "autoname": "naming_series:",

@@ -81,9 +81,9 @@ def execute():
                 {"type": "link", "label": "Equipment Calibration Log", "link_to": "Equipment Calibration Log", "link_type": "DocType"}
             ]}}
         ],
-        "Billing": [
+        "Dairy Billing": [
             {"id": "12fcf34a", "type": "shortcut", "data": {"shortcut_name": "Farmer Invoice", "col": 3}},
-            {"id": "4628ca14", "type": "card", "data": {"card_name": "Billing", "links": [
+            {"id": "4628ca14", "type": "card", "data": {"card_name": "Dairy Billing", "links": [
                 {"type": "link", "label": "Farmer Invoice", "link_to": "Farmer Invoice", "link_type": "DocType"},
                 {"type": "link", "label": "Advance Loan", "link_to": "Advance Loan", "link_type": "DocType"},
                 {"type": "link", "label": "Deduction Voucher", "link_to": "Deduction Voucher", "link_type": "DocType"},

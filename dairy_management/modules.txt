@@ -4,5 +4,5 @@ Processing
 Procurement
 Inventory
 Quality Control
-Billing
+Dairy Billing
 Dairy Management

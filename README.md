@@ -97,7 +97,7 @@ dairy_management/
 ├── procurement/              # Module 4
 ├── inventory/                # Module 5
 ├── quality_control/          # Module 6
-├── billing/                  # Module 7
+├── dairy_billing/            # Module 7
 └── public/                   # JS/CSS assets
 ```
 

@@ -1,7 +1,7 @@
 {
   "doctype": "DocType",
   "name": "Farmer Invoice Deduction",
-  "module": "Billing",
+  "module": "Dairy Billing",
   "istable": 1,
   "fields": [
     {
